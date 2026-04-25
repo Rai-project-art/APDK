@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="in">
+<head>
+   <link rel="icon" type="image/png" href="MSlogo.png">
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width" initial-scale=1.0">
+
+    <title>Data kesehatan siswa MAN 3 HSU</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=login" />
+     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+</head>
+<body>
+     <header>
+         <span id="back?" style="display:noe"class="material-symbols-outlined btn-arrow-back">
+            arrow_back_ios
+        </span>
+        
+        <h3>Data Kesehatan Siswa</h3>
+        <span id="elog"class="material-symbols-outlined" style="display:none">
+            login
+        </span>
+    </header>
+    <div id="isidata">
+        <h4>CEK DATA KESEHATAN SISWA</h4>
+        <label>Tahun Ajaran</label>
+        <select id="ptahun" >
+            <option value="">Semua Tahun</option>
+        </select>
+        <label>Periode</label>
+        <select id="pbulan" disabled>
+            <option value="">Semua Bulan</option>
+        </select>
+        <label>KELAS</label>
+        <select id="pkelas" disabled>
+            <option value="">Semua Kelas</option>
+           
+        </select>
+        <label>Individu</label>
+        <select id="pnama" disabled >
+            <option value="">memuat</option>
+        </select>
+        <p style="font-size:10px; margin-top:0px;">Data individu hanya menampilkan semua riwayat</p>
+      </div>
+  <button onclick="tombolPrint()" class="no-print" style="margin-top:15px; margin-bottom: 15px; padding:8px flex-direction: column">
+        <span class="material-symbols-outlined">
+download_2
+</span>
+   
+</button>
+  
+  <div id="utama">
+<div class="print-only" id="print">
+  
+    <h2 style="font-size:16px">Data Kesehatan Siswa MAN 3 HSU</h2>
+    <p style="font-size:8px"id="infoTanggal"></p>
+    <p style="font-size: 8px;margin-bottom:2px">Data dari: Pusat Data Kesehatan Siswa Situs MANTA SIGAP</p>
+</div>
+
+<div id="ctb">
+    <h2 style="text-align:center; font-size: 18px;">DATA REKAP KESEHATAN UMUM</h2>
+          <div class="overflow-x-auto">
+       <table class="min-w-full bg-white">
+                <thead class="bg-blue-600 text-white">
+                    <tr>
+           <th>Nama</th>          
+            <th>Kelas</th>
+            <th>Periode</th>
+            <th>Tahun Ajaran</th>
+           <th>Jenis Kelamin</th>
+            <th>Umur</th>
+            <th>TB</th>
+            <th>BB</th>
+            <th>IMT</th>
+            <th>Status IMT</th>
+            <th>Status TB</th>
+            <th>Lingkar lengan atas</th>
+            <th>Lingkar perut</th>
+            <th>Tekanan Darah</th>
+ </div>           
+             
+                    </tr>
+                </thead>
+                <tbody id="tabel" class="text-gray-700 italic">
+                    </tbody>
+            </table>
+            <div id="loader" style="text-align:center">Memuat data...</div>
+            </div>
+      </div>      
+            
+  <div id="ctbindi" style="margin-top:20px; display:none">
+      <h2 style="text-align:center; font-size: 18px;">DATA REKAP KESEHATAN INDIVIDU</h2>
+      <h4 style="margin-left:20px;font-size:14px">Nama: <a id="unama">Unknown</a></h4>
+      <h4 style="margin-left:20px;font-size:14px">Jenis Kelamin: <a id="ujk">Unknown</a></h4>
+      <h4 style="margin-left:20px;font-size:14px">Kelas: <a id="ukelas">Unknown</a></h4>
+      
+         <div class="overflow-x-auto">
+       <table class="min-w-full bg-white">
+                <thead class="bg-blue-600 text-white">
+                    <tr>
+               
+            <th>Kelas</th>
+            <th>Periode</th>
+            <th>Tahun Ajaran</th>           
+            <th>Umur</th>
+            <th>TB</th>
+           
+            <th>BB</th>
+            <th>IMT</th>
+            <th>Status IMT</th>
+            <th>Status TB</th>
+            <th id="khususp">Lila</th>
+            <th>Lingkar Perut</th>
+            <th>Tekanan Darah</th>
+ </div>           
+             
+                    </tr>
+                </thead>
+                <tbody id="tabelindi" class="text-gray-700 italic">
+                    </tbody>
+            </table>
+            <div id="loader2" style="text-align:center">Memuat data...</div>
+            </div>
+            
+  </div>        </div>
+            
+            
+            
+             <img src="qr pdk.png" style="width: 100px; display:none" id="qrc">
+            
+            
+           
+            
+            <div id="popc" style="display: none">
+        <div id="kpop">
+           <p>Kerena pembatasan di google sites, untuk fitur print hanya dapat digunakan di website kedua</p>
+            <button id="kunjungi" class="tombol">Kunjungi Web Kedua</button>
+        <button id="batalpop" style="background-color: #c6425a; color: #fff" class="tombol">Batal</button>
+        </div>
+    </div>
+    
+    
+            
+            
+            
+            
+            <div id="loading" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background-color: rgba(0,0,0,0.5);">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+        <div class="loader" style="margin: 0 auto;"></div>
+        <p style="color:#fff; margin-top: 10px;">Memuat.......</p>
+    </div>
+</div>
+ <footer style="font-size: 10px; color: #7f8c8d;text-align:center;">
+      <p style="">Ramadhana CreArtion || MAN 3 HSU</p>
+  </footer>
+
+</body>
+
+<style>
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: arial, sans-serif;
+    max-width:100%;
+  width:100%;
+  min-width:99vw;
+  margin: 0;
+}
+select{
+    font-size:12px;
+}
+label{
+    font-size:12px;
+}
+#ctb, #ctbindi{
+    width: 99%;
+    
+     overflow-x: auto;
+    border: 1px solid #eee;
+    -webkit-overflow-scrolling: touch; 
+    margin-bottom:100px;
+}
+  header {
+            width:100%;
+            background-color: #134f5c;
+            color: #fff;
+            padding: 5px 2px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            margin: 0px;
+            position: relative; 
+        }
+     #awal h3 {
+            margin: 10px;
+            font-size: 1.2rem;
+        }
+    .btn-arrow-back, #elog{
+            position: absolute;
+            left: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        } 
+h3{
+    margin-left: 5%;
+    
+}
+.login{
+    background-color: #45818e;
+    color: #fff;
+    font-family: arial;
+    font-weight: bold;
+    border-style: grove;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #fff;
+    padding: 10px;
+    margin-right: 2%;
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    box-shadow: 0px 5px 6px rgba(0,0,0,0.6);
+    display:none;
+}
+#isidata{
+    background-color: #45818e;
+    padding: 2vh, 80%;
+    border-radius: 10px;
+    border-style:solid;
+    color: #fff;
+    margin-top: 20px;
+    border-width:3px;
+     box-shadow: 0px 5px 6px rgba(0,0,0,0.6); 
+     display: grid;
+     flex-direction: flex;
+     
+     text-align: center;
+     align-items: center;
+}
+select{
+    padding: 8px;
+    display: block;
+    flex-direction: flex;
+    text-align:center;
+    margin-right: 70px;
+    margin-left: 70px;
+    background-color: #45818e;
+    color: #fff;
+    border-radius: 10px;
+    border-color:#fff;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+select:focus{
+    outline:none;
+    border-color:#3498db;
+}
+
+#popc{
+            
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 101vw;
+            height: 101vh;
+            background-color: rgba(0, 0, 0, 0.7); 
+            z-index: 9999; 
+            justify-content: center; 
+            align-items: center;     
+            margin: 0;
+        }
+        #kpop{
+            background-color: white ;
+            padding: 15px;
+            border-radius: 15px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tombol{
+            padding: 6px 20px;
+            border-radius: 10px;
+            margin-left: 0px;
+            font-size: 15px;
+            border-color: grey;
+            box-shadow: 3px 4px 3px rgba(0,0,0,0.4);
+            background-color: #134f5c;
+            margin: 15px 0px;
+            color: #fff;
+        } 
+
+#dataisi{
+    padding: 10px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #fff; 
+    background-color: #f2f2f2;
+    margin-top: 20px;
+    box-shadow: 0px 5px 6px rgba(0,0,0,0.7); 
+    
+    
+}
+table {width: 100%; border-collapse: collapse; margin-top: 20px;border-style: solid; border-color: #000; }
+ th, td { padding: 12px; text-align: center; border-bottom: 1px solid #eee; border-style: solid; border-color: #ddd }
+        th { background: #45818e; color: #f2f2f2; text-transform: uppercase; font-size: 13px; }
+        tr:hover { background: #f1f8ff; }
+
+
+.print-only, #printya {
+    display: none;
+}
+ 
+
+@media print{
+
+.print-only, #qrc { display: block !important; }
+body{width: max-content; margin-left:20px; }
+        .no-print,  #log, #elog, .material-symbols-outlined,header, #isidata, footer { display: none !important; }
+       #ctb, #ctbindi{border-style:none}
+
+
+ 
+
+    /* Sembunyikan elemen ini SAAT DI LAYAR BIASA */
+.print-only, #qrc{ display: none; }
+}
+
+
+
+     .loader {
+  width: 32px;
+  aspect-ratio: 1;
+  --_g: no-repeat radial-gradient(farthest-side,#45818e 90%,#0000);
+  background: var(--_g), var(--_g), var(--_g), var(--_g);
+  background-size: 40% 40%;
+  animation: l46 1s infinite;
+}
+@keyframes l46 {
+  0%  {background-position: 0 0      ,100% 0,100% 100%,0 100%}
+  40%,
+  50% {background-position: 100% 100%,100% 0,0    0   ,0 100%}
+  90%,
+  100%{background-position: 100% 100%,0 100%,0    0   ,100% 0}
+} 
+
+.tdj{
+    padding: 10px 10px;
+    font-weight: 500;
+    font-size:12px;
+}
+.tdb{
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 12px;
+}
+</style>
+<script src="config.js"></script>
+<script type="module" src="well.js"></script>
+<script type="module">
+    // Memanggil library inti
+    
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+// Memanggil library khusus Firestore
+import { getFirestore, collection, addDoc, getDocs, query, where, orderBy} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// Tempel config yang kamu salin tadi di sini
+const firebaseConfig = {
+  apiKey: "AIzaSyAw7vzgjvLQfCklMKvdQYFQb7MKpNn8lL4",
+  authDomain: "pusat-data-96c4b.firebaseapp.com",
+  projectId: "pusat-data-96c4b",
+  storageBucket: "pusat-data-96c4b.firebasestorage.app",
+  messagingSenderId: "825366165936",
+  appId: "1:825366165936:web:e8a91875aa8d4a43c33e75"
+};
+
+
+// Inisialisasi koneksi
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const urutanBulan = {
+    "Januari": 1, "Februari": 2, "Maret": 3, "April": 4, "Mei": 5, "Juni": 6,
+    "Juli": 7, "Agustus": 8, "September": 9, "Oktober": 10, "November": 11, "Desember": 12
+};
+
+const dkelas = document.getElementById("pkelas");
+const dtahun = document.getElementById("ptahun")
+const dbulan = document.getElementById("pbulan");
+const dnama = document.getElementById("pnama");
+const tbl = document.getElementById("tabel");
+const tblindi = document.getElementById("tabelindi");
+const lod = document.getElementById("loader");
+const lod2 = document.getElementById("loader2");
+const load = document.getElementById("loading");
+
+
+
+
+document.getElementById("elog").addEventListener("click", function(){
+    
+})
+
+
+
+let dt = [];
+let dthead = [];
+let dtkelas = [];
+let dtjk =[];
+let qs= [];
+let ta="";
+
+async function loadData(){
+load.style.display="block";
+try{
+    const dtnm = await getDocs(collection(db,"DataSiswa"));
+    dtnm.forEach(x=>{
+        dthead[x.id] = x.data().Nama;
+        dtjk[x.id] = x.data().JK;
+        if(x.data().Status==="Aktif"){
+            dtkelas[x.id]= x.data().Kelas;
+        }else{
+            dtkelas[x.id]="Telah Tidak Aktif di MAN 3 HSU"
+        }
+    })
+    
+    
+     qs = collection(db,"Datakes");
+    const qh = await getDocs(qs);
+    dt = qh.docs.map(doc=>{
+        const ini = doc.data();
+        const id = ini.Id_siswa;
+        
+        return{
+            ...ini,Nama: dthead[id]||"Unknown", id_s: id||"unknow"
+        }
+    });
+
+    
+    isitabel(dt);
+    
+    lod.style.display="none";
+    lod2.style.display="none";
+     muattahun();
+     
+    }catch(e){
+        lod.innerText="error"
+    }
+     load.style.display="none";
+}
+   
+   
+   
+   
+    function isitabel(data) {
+    lod.style.display="block";
+    data.sort((a,b)=>{
+        if(b.TahunAjaran!== a.TahunAjaran){
+            return b.TahunAjaran.localeCompare(a.TahunAjaran);
+        }
+        
+        const bulanA = urutanBulan[a.Periode] || 0;
+        const bulanB = urutanBulan[b.Periode] || 0;
+        if (bulanA !== bulanB) {
+            return bulanA - bulanB;
+        }
+        const kelbind = a.Kelas.localeCompare(b.Kelas, undefined, { numeric: true, sensitivity: 'base' });
+        if(kelbind!=0){
+            return kelbind;
+        }
+        
+        return a.Nama.localeCompare(b.Nama, undefined, { sensitivity: 'base' });
+        
+    }  )
+    function clila(x){
+        if(x.JK==="Perempuan"){
+            return x.LILA
+        }else{
+            return "-";
+        }
+    }
+    
+    if(dnama.value===""){
+            tbl.innerHTML = data.map(siswa => `
+                <tr class="border-b">
+                    <td class="tdj">${siswa.Nama}</td>
+                    <td class="tdb">${siswa.Kelas}</td>
+                    <td class="tdb">${siswa.Periode}</td>
+                    <td class="tdb">${siswa.TahunAjaran}</td>
+                    <td class="tdb">${siswa.JK}</td>
+                       <td class="tdb">${siswa.Umur}</td>
+                    <td class="tdb">${siswa.TB}</td>
+                    <td class="tdb">${siswa.BB}</td>
+                    <td class="tdb">${siswa.IMT}</td>
+                    <td class="tdb">${siswa.StaIMT}</td>
+                    <td class="tdb">${siswa.StaTB}</td>
+                    
+                        <td class="tdb">${clila(siswa)}</td>
+                    
+                        <td class="tdb">${siswa.LP}</td>
+                    <td class="tdb">${siswa.TD}</td>
+                </tr>
+            `).join('');
+            }else{
+                
+                if(dtjk[([...new Set(data.map(siswa => siswa.id_s))])] ==="Perempuan"){
+                document.getElementById("khususp").style.display="";
+                
+                
+                tblindi.innerHTML = data.map(siswa => `
+                  
+                <tr class="border-b">
+                  
+                    <td class="tdb">${siswa.Kelas}</td>
+                    <td class="tdb">${siswa.Periode}</td>
+                    <td class="tdb">${siswa.TahunAjaran}</td>
+                    
+                       <td class="tdb">${siswa.Umur}</td>
+                    <td class="tdb">${siswa.TB}</td>
+                    
+                    <td class="tdb">${siswa.BB}</td>
+                    <td class="tdb">${siswa.IMT}</td>
+                    <td class="tdb">${siswa.StaIMT}</td>
+                    <td class="tdb">${siswa.StaTB}</td>
+                    <td class="tdb">${siswa.LILA}</td>
+                    <td class="tdb">${siswa.LP}</td>
+                    <td class="tdb">${siswa.TD}</td>
+                    
+                </tr>
+            `).join('');
+            
+            }else{
+                
+                document.getElementById("khususp").style.display="none";
+                
+                
+                tblindi.innerHTML = data.map(siswa => `
+                  
+                <tr class="border-b">
+                  
+                    <td class="tdb">${siswa.Kelas}</td>
+                    <td class="tdb">${siswa.Periode}</td>
+                    <td class="tdb">${siswa.TahunAjaran}</td>
+                    
+                       <td class="tdb">${siswa.Umur}</td>
+                    <td class="tdb">${siswa.TB}</td>
+                    
+                    <td class="tdb">${siswa.BB}</td>
+                    <td class="tdb">${siswa.IMT}</td>
+                    <td class="tdb">${siswa.StaIMT}</td>
+                    <td class="tdb">${siswa.StaTB}</td>
+                    
+                    <td class="tdb">${siswa.LP}</td>
+                    <td class="tdb">${siswa.TD}</td>
+                    
+                </tr>
+            `).join('');
+            }
+            
+                document.getElementById("unama").innerHTML = [...new Set(data.map(siswa => siswa.Nama))];
+                document.getElementById("ukelas").innerHTML = dtkelas[( [...new Set(data.map(siswa => siswa.id_s))])];
+                document.getElementById("ujk").innerHTML= dtjk[([...new Set(data.map(siswa => siswa.id_s))])];
+                
+                
+                
+            }
+            
+            lod.style.display="none";
+        }
+
+
+
+
+
+async function muattahun(){
+    
+   
+    
+    
+    const dtahunnya = [...new Set(dt.map(b=>b.TahunAjaran))].sort().reverse();
+    
+    dtahun.innerHTML=`<option value="">Semua Tahun</option>`;
+    
+    dtahunnya.forEach(i=>{
+        dtahun.innerHTML+=`<option value="${i}">${i}</option>`
+    })
+    
+}
+
+let dt2=[];
+dtahun.addEventListener("change", function(){
+document.getElementById("ctb").style.display="block";
+        document.getElementById("ctbindi").style.display="none";
+
+    if(dtahun.value!=""){
+        
+        dt2= dt.filter(i=>i.TahunAjaran===dtahun.value);
+        
+        const ytt = [...new Set(dt2.map(i=>i.Periode))].sort((a,b)=>{
+            return urutanBulan[a]-urutanBulan[b]
+        });
+        
+        dbulan.innerHTML=`<option value="">Semua Bulan</option>`;
+        
+        ytt.forEach(i=>{
+            dbulan.innerHTML+=`<option value="${i}">${i}</option>`
+        })
+        filter();
+        dbulan.disabled= false;
+    }else{
+        dbulan.disabled= true;
+        dbulan.innerHTML=`<option value="">Semua Bulan</option>`;
+         dkelas.innerHTML=`<option value="">Semua Kelas</option>`;
+        dkelas.disabled=true;
+        
+        dnama.innerHTML=`<option value="">Semua Nama</option>`;
+        
+        dnama.disabled=true;
+        filter();
+    }
+})
+
+
+let dt3=[];
+dbulan.addEventListener("change", function(){
+document.getElementById("ctb").style.display="block";
+  document.getElementById("ctbindi").style.display="none";
+
+    if(dbulan.value!=""){
+        
+        dt3 = dt2.filter(i=>i.Periode===dbulan.value);
+        
+        const ytt = [...new Set(dt3.map(i=>i.Kelas))].sort();
+    
+        dkelas.innerHTML=`<option value="">Semua Kelas</option>`;
+        
+        ytt.forEach(i=>{
+            dkelas.innerHTML+=`<option value="${i}">${i}</option>`
+        })
+        filter();
+        dkelas.disabled=false;
+
+    }else{
+        dkelas.innerHTML=`<option value="">Semua Kelas</option>`;
+        dkelas.disabled=true;
+        
+        dnama.innerHTML=`<option value="">Semua Nama</option>`;
+        
+        dnama.disabled=true;
+        filter();
+    }
+})
+
+
+dkelas.addEventListener("change", function(){
+document.getElementById("ctb").style.display="block";
+document.getElementById("ctbindi").style.display="none";
+
+    if(dkelas.value!=""){
+        
+        const dt4 = dt3.filter(i=>i.Kelas===dkelas.value);
+        
+       const ytt= dt4.map(i=>i.Id_siswa).sort();
+
+        let nyaman = [];
+        
+        dnama.innerHTML=`<option value="">Semua Nama</option>`;
+        
+        ytt.forEach(i=>{
+            dnama.innerHTML+=`<option value="${i}">${dthead[i]}</option>`
+        })
+        filter();
+        dnama.disabled=false;
+    }else{
+        
+        dnama.innerHTML=`<option value="">Semua Nama</option>`;
+        
+        dnama.disabled=true;
+        filter();
+    }
+})
+
+
+
+dnama.addEventListener("change", function(){
+    if(dnama.value!=""){
+        
+        const dtpribadi = dt.filter(i=>i.Id_siswa===dnama.value);
+    
+        isitabel(dtpribadi);
+        document.getElementById("ctb").style.display="none";
+        document.getElementById("ctbindi").style.display="block";
+        
+        
+    }else{
+        filter();
+        document.getElementById("ctb").style.display="block";
+        document.getElementById("ctbindi").style.display="none";
+    }
+})
+
+
+
+
+        
+
+function filter(e){
+
+    
+    
+    const ktahun = dtahun.value;
+    const kperiode =dbulan.value;
+    const kkelas = dkelas.value;
+    const knama = dnama.value;
+    
+    
+    
+    const fil = dt.filter(ss=>{
+        const kdtahun = !ktahun || ss.TahunAjaran === ktahun;
+        const kdkelas = !kkelas || ss.Kelas === kkelas;
+        const kdnama = !knama || ss.id_s === knama;
+        const kdbulan = !kperiode || ss.Periode === kperiode;
+        
+        return kdkelas && kdtahun && kdbulan &&kdnama
+    });
+    
+    
+    
+    isitabel(fil);
+    
+    if(e&&e.target.id==='pbulan'){
+    
+        const dts = dt.filter(s=>!kperiode||s.Periode===kperiode);
+        pilkelas(dts);
+        console.log(kperiode);
+        
+    
+    
+    
+    }
+}
+
+   
+    
+
+  loadData();
+  
+ 
+  document.getElementById("batalpop").addEventListener("click", function(){
+        
+        document.getElementById("popc").style.display="none";
+        
+    })  
+    
+  
+  
+ document.getElementById("kunjungi").addEventListener("click", function(){
+     window.location.href ="";
+ })
+  
+function kdbisaprint(){
+    document.getElementById("popc").style.display="flex";
+}
+
+  
+  
+window.tombolPrint = function() {
+    
+        // 1. Isi tanggal cetak otomatis
+        const tgl = new Date().toLocaleString('id-ID');
+        const info = document.getElementById('infoTanggal');
+        if (info) info.innerText = "Dicetak pada: " + tgl;
+
+        // 2. Perintah print browser
+        window.print();        
+    }
+  
+  document.getElementById("back?").addEventListener("click", function(){
+    window.location.href="beranda.html";
+})
+</script>
+</html>
