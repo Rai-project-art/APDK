@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="in">
+<head>
+    <meta charset="UTF-8">
+    <title>Dispatch</title>
+    <meta name="viewport" content="width=device-width" initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+    <div class="cdispath" id="cdispath">
+       
+        <div class="cpesan" id="cpesan">
+            <div class="dev">
+               </div>
+        </div>
+        <div id="loadmengirim" class="warni">Sedang mengirim....</div>
+        <div id="gagalmengirim" class="warni">Gagal Mengirim</div>
+        <input id="cadmin"type="text" placeholder="ketik pesan || !report + pesan">
+    </div>
+    
+    <button id="bukaadacty"><span class="material-symbols-outlined"id="buk">
+forum
+</span><span class="material-symbols-outlined" style="display:none" id="tup">
+cancel
+</span>
+</button>
+</body>
+<style>
+    body {
+            font-family: Arial, Verdana, sans-serif;
+            margin: 0px;
+            background-color:#ececec ;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.4)), url("BG1.png");
+            
+        }
+        
+        
+        .cdispath{
+            position:fixed;
+            top:20px;
+            left: 20px;
+            width: 40%;
+            height: 40%;
+            z-index: 9999;
+            display:flex;
+            flex-direction: column;
+            border: 1px solid grey;
+            padding: 6px;
+            border-radius: 10px 3px;
+            display:none;
+        }
+        .cdispath input{
+           position: relative;
+            bottom: 0px;
+            padding: 6px;
+            background-color: rgba(0,0,0,0.1);
+            border-radius: 3px;
+            border-color: grey;
+            border-style:solid;
+            border-width: 1px;
+            box-shadow: 2px 3px 3px rgba(0,0,0,0.6);
+            color: #fff;
+            
+            
+        }
+        .cdispath input:focus{
+            outline: none;
+            border-color: #8098ff;
+        }
+      
+        .cpesan{
+            display:flex;
+            flex-direction: column-reverse;
+            overflow-y: auto;
+            align-items:flex-start;
+            justify-content: flex-start;
+            width: 100%;
+            height: 90%;
+            margin-bottom:2px;
+            gap: 3px;
+        }
+        .pesannya{
+            background-color: #fff;
+            border-radius: 3px 10px;
+            font-size:10px;
+            margin-left:0px;
+            padding: 2px;
+            width:80%;
+            box-shadow: 2px 3px 3px rgba(0,0,0,0.6);
+            animation : pesanmasuk 0.5s ease forwards;
+        }
+        .pesannya p{
+            margin-top:3px;
+            margin-bottom:3px;
+        }
+        .iden{
+            opacity: 0.6;
+            font-size: 8px;
+        }
+        .tanggal{
+            opacity: 0.6;
+            font-size: 8px;
+            text-align: right;
+            margin-bottom: 2px;
+        }
+        @keyframes pesanmasuk{
+            0%{
+                transform: translateX(-100px);
+                opacity:0;
+            }
+            100%{
+                transform: translateX(0px);
+                opacity:1;
+            }
+        }
+        
+        .dev, .preport{
+            background-color: #ffb22a;
+            border-radius: 3px 10px;
+            font-size:10px;
+            margin-left:0px;
+            padding: 2px;
+            width:80%;
+            box-shadow: 2px 3px 3px rgba(0,0,0,0.6);
+            animation : pesanmasuk 0.5s ease forwards;
+        }
+        .dev p, .preport p{
+            margin-top:3px;
+            margin-bottom:3px;
+        }
+        .warni{
+            color:#fff;
+            font-size:10px;
+            margin-bottom:10px;
+            margin-top:5px;
+            display:flex;
+            display:none;
+        }
+        .preport{
+            background-color:#ff5574;
+        }
+        #bukaadacty{
+            border-radius: 3px 6px;
+            position:fixed;
+            justify-content:center;
+            align-items: center;
+            top: 60%;
+            left: 6px;
+            z-index: 9999;
+        }
+        #bukaadacty span{
+            font-size: 15px;
+        }
+        
+</style>
+<script src="config.js"></script>
+<script type="module" src="well.js"></script>
+<script type="module">
+    
+    
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+ import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, getDoc, doc, serverTimestamp, updateDoc, writeBatch, deleteDoc, setDoc, onSnapshot} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"; 
+ 
+    const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+let usernya=[];
+let uaid = "";
+async function ambildatauser(){
+    
+    
+    const dtpath = await getDocs(collection(db,"users"));
+    
+    usernya = dtpath.docs.map(i=>({
+        id: i.id,
+        ...i.data()
+    }))
+    
+    ambildatachat();
+   uaid= localStorage.getItem("uaid");
+}
+
+async function ambildatachat(){
+    const waktuSekarang = new Date(); 
+    const q = query(
+  collection(db, "adAct"),
+  where("UP_TIME", ">", waktuSekarang)
+);
+    const semuanya = await getDocs(q);
+    let hasilnya = semuanya.docs.map(b=>({...b.data()}));
+    hasilnya= hasilnya.sort((a, b) => {
+  const dateA = a.UP_TIME?.toDate() || 0;
+  const dateB = b.UP_TIME?.toDate() || 0;
+  return dateB - dateA;
+});
+    tampilkanchat(hasilnya);
+    
+}
+
+async function tampilkanchat(data){
+    const leyo = document.getElementById("cpesan");
+    leyo.innerHTML = "";
+    
+    data.forEach(b=>{
+    const chat = document.createElement('div');
+    
+    
+    const cain = usernya.filter(i=>i.id===b.UC_ID)
+    
+    if(cain[0].PK === "Khusus"){
+        chat.className = "dev";
+    }else if(b.Jenis ==="Report"){
+        chat.className="preport";
+    }else{
+        chat.className="pesannya"
+    }
+    const waktuTampil = b.UP_TIME && typeof b.UP_TIME.toDate === 'function' 
+            ? b.UP_TIME.toDate().toLocaleString('id-ID') 
+            : "Sedang mengirim..."; 
+    chat.innerHTML =` <p class="iden">${cain[0].username} || ${cain[0].callsign}</p>
+                <p class="textnya">${b.Pesan}</p>
+                <p class="tanggal">${waktuTampil}</p>`
+    
+    
+    leyo.appendChild(chat);
+    
+    })
+}
+    
+    document.getElementById("cadmin").onkeypress = function (e){
+        if(e.key === 'Enter'){
+            kirimchat(document.getElementById("cadmin").value)
+            document.getElementById("cadmin").value="";
+        }
+        
+    }
+   
+   
+  async function kirimchat(chat){
+      const pesan = chat;
+      let jenis ="";
+      if(chat.includes("!report")){
+          jenis ="Report"
+      }else{
+          jenis ="biasa"
+      
+      }
+      
+      
+      const delsoon = new Date();
+      delsoon.setHours(delsoon.getHours()+24);
+      document.getElementById("loadmengirim").style.display="flex";
+      try{
+      const path = collection(db, "adAct")
+          await addDoc(path, {
+              Pesan: pesan,
+              Jenis: jenis,
+              UC_ID: uaid,
+              UP_TIME: serverTimestamp(),
+              
+              Exp: delsoon
+          })
+          
+          if(jenis==="Report"){
+          const oo = usernya.filter(i=>i.id === uaid);
+          const masa = (new Date()).toLocaleString();
+              laporpak( "["+masa+"] "+"["+oo[0].username+" || "+oo[0].callsign+"] "+pesan )
+          }
+      }catch(e){
+         console.log(e)
+         document.getElementById("gagalmengirim").style.display="flex";
+      }
+      document.getElementById("loadmengirim").style.display="none";
+  }
+   
+   
+
+
+async function awal(){
+
+
+await ambildatauser();
+const waktuSekarang = new Date(); 
+
+const q = query(
+  collection(db, "adAct"),
+  where("UP_TIME", ">", waktuSekarang)
+);
+onSnapshot(q, (snapshot) => {
+  
+  let data = snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data({ serverTimestamps: 'estimate' }) 
+  }));
+
+   data= data.sort((a, b) => {
+  const dateA = a.UP_TIME?.toDate() || 0;
+  const dateB = b.UP_TIME?.toDate() || 0;
+  return dateB - dateA;
+});
+  snapshot.docChanges().forEach((change) => {
+    if (change.type === "added") {
+      
+      tampilkanchat(data); 
+      document.getElementById("cdispath").style.display="flex";
+      
+      setTimeout(()=>{
+          document.getElementById("cdispath").style.display="none"
+          document.getElementById("buk").style.display="flex";
+        document.getElementById("tup").style.display="none"; 
+      },7000)
+    }
+  });
+});
+
+}
+
+document.getElementById("bukaadacty").onclick = function(){
+    if(document.getElementById("tup").style.display==="none"){
+        document.getElementById("cdispath").style.display="flex"
+        document.getElementById("buk").style.display="none";
+        document.getElementById("tup").style.display="flex";
+    }else{
+        document.getElementById("cdispath").style.display="none"
+        document.getElementById("buk").style.display="flex";
+        document.getElementById("tup").style.display="none"; 
+    }
+    
+}
+
+function laporpak(pesan){
+    
+    const url =`https://api.telegram.org/bot8512781547:AAHB61ey-eO8DnKk5zd4kh4M3YQY1QTveWc/sendMessage?chat_id=6667524508&text=${encodeURIComponent(pesan)}`;
+
+    
+    fetch(url, {mode: 'no-cors'})
+}
+   
+    awal();
+    
+    
+</script>
+</html>
