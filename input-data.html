@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="in">
+<head>
+    <link rel="icon" type="image/png" href="MSlogo.png">
+      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <title>Input Data Kesehatan</title>
+    <link rel="stylesheet" type="text/css" href="distyle.css">
+
+</head>
+<body style="display:none">
+    
+   <header>
+         <span id="back?"class="material-symbols-outlined btn-arrow-back">
+            arrow_back_ios
+        </span>
+        <h3>Input Data</h3>
+    </header>
+    
+    
+    <div id="fitur" style="">
+        <div id="o1" class="kon">
+            <h3>Input Data Kesehatan Siswa</h3>
+            <p>Masukkan data kesehatan siswa yang telah terdata, dan masih aktif sebagai siswa</p>
+        </div>
+        
+        
+        <div id="o2" class="kon">
+            <h3>Input Data Siswa Baru</h3>
+            <p>Masukkan data siswa yang belum terdata</p>
+        </div>
+    </div>
+    
+    <div id="p1" class="ckon" style="display:none">
+        <h4 class="atasisi">Input Data Kesehatan Siswa</h4>
+        <div id="p1isi" class="konten">
+            <p>Menginput data cek kesehatan siswa yang sudah terdata dan masih aktif, seperti umur, berat badan, dan tinggi badan.</p>
+            <p>Perhatian</p>
+            <p>Jika siswa ini telah pindah kelas, maka pilih kelas sebelumnya</p>
+        </div>
+        
+        <div id="p1dt1" class="cdata">
+            <label>Tahun Ajaran</label>
+            <select id="p1th">
+                <option value="">Pilih Tahun yang Sudah Ada</option>
+            </select>
+            <button id="mautahun"class="tomboltama">Tambah Tahun</button>
+            <input style="display:none" type="text" id="p1thbaru" placeholder="Tahun Ajaran Baru">
+            <label>Periode</label>
+            <select id="p1bln" style="display:">
+                <option value="">Pilih bulan</option>
+                  <option value="Januari">Januari</option>
+                  <option value="Februari">Februari</option>
+                  <option value="Maret">Maret</option>
+                  <option value="April">April</option>
+                  <option value="Mei">Mei</option>
+                  <option value="Juni">Juni</option>
+                  <option value="Juli">Juli</option>
+                  <option value="Agustus">Agustus</option>
+                  <option value="September">September</option>
+                  <option value="Oktober">Oktober</option>
+                  <option value="November">November</option>
+                  <option value="Desember">Desember</option>
+                  
+            </select>
+            
+         </div>
+         <div id="p1dt2" class="cdata">
+             <label>Kelas</label>
+             <select id="p1kel">
+                 <option value="">Pilih Kelas</option>
+             </select>
+             <p>Pindah kelas? Harap perbaharui di<button class="tomboltama" id="pindahkelas">Ubah Data Kelas</button></a></p>
+             <select id="pilpindahkelas" style="display:none">
+                 <option value="">Pilih kelas</option>
+                  <option value="X A">X A</option>
+                  <option value="X B">X B</option>
+                  <option value="X C">X C</option>
+                  <option value="X D">X D</option>
+                  <option value="XI A">XI A</option>
+                  <option value="XI B">XI B</option>
+                  <option value="XI C">XI C</option>
+                  <option value="XI D">XI D</option>
+                  <option value="XII A">XII A</option>
+                  <option value="XII B">XII B</option>
+                  <option value="XII C">XII C</option>
+                  <option value="XII D">XII D</option>
+             </select>
+             <label>Nama</label>
+             <select id="p1nm" disabled>
+                 <option value="">Pilih Nama</option>
+             </select>
+             <label>Jenis Kelamin</label>
+             <p style="font-size:15px" id="p1jk">----</p>
+             <label>Jumlah Data Kesehatannya</label>
+             <p style="font-size:15px" id="p1jdkes">---</p>
+              <p id="erp1" style="margin:0px; color:red; font-size:14px;display:none;">Silahkan isi lengkap!!</p> 
+             <button id="bukap1" class="tomboltama">Pilih Data</button>
+         </div>
+         
+    </div>
+    
+ 
+ 
+ <div id="p2" class="ckon" style="display:none">
+     <h4 class="atasisi">Input Data Siswa Baru</h4>
+     <div class="konten">
+         <p>Menambahkan data siswa baru yang belum tersimpan datanya didalam pusat data kesehatan siswa</p>
+     </div>
+     <div id="p2dt1" class="cdata">
+         <h4>Informasi Siswa</h4>
+         <label>Nama</label>
+         <input type="text" id="p2nm" placeholder="Masukkan Nama">
+         <label>Kelas saat ini</label>
+         <select id="p2kel">
+             <option value="">Pilih kelas</option>
+                  <option value="X A">X A</option>
+                  <option value="X B">X B</option>
+                  <option value="X C">X C</option>
+                  <option value="X D">X D</option>
+                  <option value="XI A">XI A</option>
+                  <option value="XI B">XI B</option>
+                  <option value="XI C">XI C</option>
+                  <option value="XI D">XI D</option>
+                  <option value="XII A">XII A</option>
+                  <option value="XII B">XII B</option>
+                  <option value="XII C">XII C</option>
+                  <option value="XII D">XII D</option>
+                  
+         </select>
+         <label>Jenis Kelamin</label>
+         <select id="p2jk">
+                <option value="">Pilih</option>
+                <option value="Laki laki">Laki Laki</option>
+                <option value="Perempuan">Perempuan</option>
+         </select>
+         
+         <div style="display:flex;  align-items:center; justify-content: center;margin-top:30px">
+             <span id="cektidakaktif" class="material-symbols-outlined" style="font-size:30px;display:block">
+check_box_outline_blank
+</span>
+<span id="cekaktif" class="material-symbols-outlined" style="font-size:30px; display:none">
+check_box
+</span>
+<span style="margin-left:8px; font-size:14px;">Aktif Sebagai Siswa MAN 3 HSU</span>
+         </div>
+         
+         <label>Tahun Ajaran</label>
+         <select id="p2th">
+             <option value="">Tahun Ajaran</option>
+         </select>
+         <button id="p2mautahunbaru" class="tomboltama">Tambah Tahun Ajaran Baru</button>
+         <input style="display:none" type="text" id="p2thbaru" placeholder="Masukkan Tahun Ajaran cth: 2025/2026">
+         <label>Periode</label>
+         <select id="p2bln">
+               <option value="">Pilih bulan</option>
+                  <option value="Januari">Januari</option>
+                  <option value="Februari">Februari</option>
+                  <option value="Maret">Maret</option>
+                  <option value="April">April</option>
+                  <option value="Mei">Mei</option>
+                  <option value="Juni">Juni</option>
+                  <option value="Juli">Juli</option>
+                  <option value="Agustus">Agustus</option>
+                  <option value="September">September</option>
+                  <option value="Oktober">Oktober</option>
+                  <option value="November">November</option>
+                  <option value="Desember">Desember</option>
+                   
+         </select>
+         
+         
+         
+         <p id="erp2" style="margin:0px; color:red; font-size:14px;display:none;">Silahkan isi lengkap!!</p> 
+         <button class="tomboltama" id="yakindb">Simpan Data</button>
+              </div>
+     
+     
+ </div>
+ 
+ 
+ 
+    
+    
+   <div id="datakes" class="ckon" style="display:none">
+    <div class="cdata">
+        <h4>Data Kesehatan</h4>
+        <label>Umur(tahun)</label>
+        <input type="number" id="dtumur" placeholder="Masukkan Umur cth: 17"> 
+        <label>Berat Badan(Kg)</label>
+        <input type="number" id="dtbb" placeholder="Masukkan Berat Badan cth: 50">
+        <label>Tinggi Badan(cm)</label>
+        <input type="number" id="dttb" placeholder="Masukkan Tinggi Badan cth: 170">
+        <label>Lingkar Lengan Atas/LILA (cm)</label>
+        
+        
+           <input type="number" id="dtlila" placeholder="Masukkan LILA cth: 24">
+           <p style="margin-top:0px">*khusus Perempuan</p>
+            <label>Lingkar Perut/LP (cm)</label>
+           <input type="number" id="dtlp" placeholder="Masukkan LP cth: 64">
+           <label>Tekanan Darah/TD</label>
+           <input type="text" id="dttd" placeholder="Masukkan TD cth: 100/90">
+          </div>
+          <p id="erdtkes" style="margin:0px; color:red; font-size:14px;display:none;">Silahkan isi lengkap!!</p> 
+          <button id="konfir" class="tomboltama">Konfirmasi</button>
+          
+          
+          <div id="dtkesinfo" class="infokan" style="display:none">
+              <h5>Nama</h5>
+              <h4 id="infonama">unknown</h4>
+               <h5>Kelas</h5>
+              <h4 id="infokelas">unknown</h4>
+              <h5>Jenis Kelamin</h5>
+              <h4 id="infojk">unknown</h4>
+              <h5>Status Siswa MAN 3 HSU</h5>
+              <h4 id="infoaktif">unknown</h4>
+               <h5>Umur</h5>
+              <h4 id="infoumur">unknown</h4>
+               <h5>Tahun Ajaran</h5>
+              <h4 id="infoth">unknown</h4>
+               <h5>Periode</h5>
+              <h4 id="infobln">unknown</h4>
+               <h5>Berat Badan</h5>
+              <h4 id="infobb">unknown</h4>
+               <h5>Tinggi Badan</h5>
+              <h4 id="infotb">unknown</h4>
+              <h5>Status Tinggi</h5>
+              <h4 id="infostb">unknown</h4>
+              <h5>IMT</h5>
+              <h4 id="infoimt">unknown</h4>
+              <h5>Status IMT</h5>
+              <h4 id="infosimt">unknown</h4>
+              <div id="khususperempuan">
+              <h5>Lingkar Lengan Atas</h5>
+              <h4 id="infolila">unknown</h4></div>
+              <h5>Lingkar Perut</h5>
+              <h4 id="infolp">unknown</h4>
+              <h5>Tekanan Darah</h5>
+              <h4 id="infotd">unknown</h4>
+              
+              
+          </div>
+          <button id="yakinkahkes" class="tomboltama">Simpan Data</button>
+    </div>
+    
+    
+ 
+ 
+    
+    
+    
+    
+    
+    
+     <div id="popc" style="display: none">
+        <div id="kpop">
+           
+            <div id="pyakinsb">
+                <h4>Yakin Input Data Ini?</h4>
+                <p>Nama</p>
+                <h4 id="pinfonm">Unknown</h4>
+                <p>Kelas</p>
+                <h4 id="pinfokel">unknown</h4>
+                <p>Jenis Kelamin</p>
+                <h4 id="pinfojk">unknown</h4>
+                <p>Status Siswa</p>
+                <h4 id="pinfoaktif">unknown</h4>
+                
+                <p>Periksa Kembali datanya</p>
+                <button id="yakinsb" class="tombol">Simpan Data</button>
+            </div>
+        
+        <div id="pyakinkes">
+            <h4>Yakin Simpan Data Ini?</h4>
+            <p>Periksa kembali datanya</p>
+            <button id="yakinkes" class="tombol">Simpan</button>
+        </div>
+        
+        
+        <div id="popsukses">
+            <span class="material-symbols-outlined" style="font-size: 100px; color: #134f5c">
+check_circle
+</span> 
+<h2>Sukses</h2>
+<button style="display:none" id="lanjutdtkes" class="tombol">Lanjut Isi Data Kesehatan</button>
+
+        </div>
+        <div id="poperor">
+            <span class="material-symbols-outlined" style="font-size: 100px; color:#a82a45">cancel</span>
+            <h2>error</h2>
+        </div>
+        
+        <button id="batalpop" style="background-color: #c6425a; color: #fff" class="tombol">Batal</button>
+        </div>
+    </div>
+    
+    <div class="cdispath" id="cdispath">
+       
+        <div class="cpesan" id="cpesan">
+            
+            <div class="dev">
+               </div>
+        </div>
+        <div id="loadmengirim" class="warni">Sedang mengirim....</div>
+        <div id="gagalmengirim" class="warni">Gagal Mengirim</div>
+           <div id="kcsalah" class="warni">Kata kunci tidak valid</div>
+      <div id="gagalmenghapus" class="warni">Operasi Hapus Riwayat Chat gagal</div>
+       <div id="berhasilmenghapus" class="warni">Berhasil Operasi Hapus Semua Riwayat Chat</div>
+        <div id="prosesmenghapus" class="warni">Proses Menghapus Semua Riwayat Chata.....</div>
+        
+        <input id="cadmin"type="text" placeholder="ketik...">
+    </div>
+    
+    <button id="bukaadacty"><span class="material-symbols-outlined"id="buk">
+forum
+</span><span class="material-symbols-outlined" style="display:none" id="tup">
+cancel
+</span>
+</button>
+    
+    <script type="module" src="disjs.js"></script>
+    
+     <footer style="margin-top:auto; font-size: 10px; color: #7f8c8d;text-align:center">
+      <p>Ramadhana CreArtion || MAN 3 HSU</p>
+  </footer>
+</body>
+
+<div id="loading" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background-color: rgba(0,0,0,0.5);">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+        <div class="loader" style="margin: 0 auto;"></div>
+         <p style="color:#fff; margin-left:20px;font-family:Arial,Verdana;">Memuat.......</p>
+
+    </div>
+ </div>
+<style>
+     body {
+            font-family: Arial, Verdana, sans-serif;
+            margin: 0px;
+            background-color:#ececec ;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.4)), url("BG1.png");
+            
+        }
+
+    header {
+            width:100%;
+            background-color: #134f5c;
+            color: #fff;
+            padding: 5px 2px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            margin: 0px;
+            position: relative; 
+        }
+
+       #awal h3 {
+            margin: 10px;
+            font-size: 1.2rem;
+        }
+         .btn-arrow-back {
+            position: absolute;
+            left: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        } 
+        .kon{
+            padding: 20px;
+            box-shadow: 6px 5px 1px rgba(0,0,0,0.6);
+            border-radius: 10px;
+            background-color: #45818e;
+            color: #fff;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        #fitur, #p3isi{
+            margin-top:80px;
+            margin-left:30px;
+            margin-right: 20px;
+        }
+         #popc{
+            
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 101vw;
+            height: 101vh;
+            background-color: rgba(0, 0, 0, 0.7); 
+            z-index: 9999; 
+            justify-content: center; 
+            align-items: center;     
+            margin: 0;
+        }
+        #kpop{
+            background-color: white ;
+            padding: 15px;
+            border-radius: 15px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tombol{
+            padding: 6px 20px;
+            border-radius: 10px;
+            margin-left: 0px;
+            font-size: 15px;
+            border-color: grey;
+            box-shadow: 3px 4px 3px rgba(0,0,0,0.4);
+            background-color: #134f5c;
+            margin: 15px 0px;
+            color: #fff;
+        }
+        .konten{
+            padding: 10px;
+            background-color: #fff;
+            border-style: solid;
+            border-color: grey;
+            border-radius:10px;
+            margin: 20px 30px;
+            
+        }
+        .ckon{
+            text-align: center;
+        }
+        ol{
+            text-align: left; 
+            font-style: justify;
+        }
+        
+        .atasisi{
+            padding: 10px;
+            background-color: #134f5c;
+            color: #fff;
+            box-shadow: 2px 4px 4px rgba(0,0,0,0.5);
+            margin: 20px; 20px;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+        .cdata{
+            display: flex;
+            flex-direction: column;
+            margin: 10px 40px;
+            background-color: #45818e;
+            padding: 20px;
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 2px 4px 3px rgba(0,0,0,0.5);
+        }
+        select, input{
+            background-color: #45818e;
+            border-radius: 10px;
+            margin: 10px 20px;
+            color: #fff;
+            padding: 10px;
+            border-color: #fff;
+            text-align: center;
+            
+        }
+        input::placeholder{
+            color: #fff;
+            opacity: 0.4;
+        }
+        label{
+            margin-top: 20px;
+        }
+        select:focus, input:focus{
+            outline: none;
+            border-color: #3498db;
+            
+        }
+        
+        .tomboltama{
+            padding: 10px;
+            border-radius: 10px;
+            margin-left: 0px;
+            font-size: 15px;
+            border-color: grey;
+            box-shadow: 3px 4px 3px rgba(0,0,0,0.4);
+            margin: 20px 60px;
+            background-color: #134f5c;
+            color: #fff;
+        }
+        
+        .infokan{
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 2px 4px 3px rgba(0,0,0,0.5);
+            margin: 20px 30px;
+            border-radius: 10px;
+        }
+        p{
+            font-size:12px;
+        }
+        label{
+            font-size: 14px;
+        }
+        
+        .loader {
+  width: 32px;
+  aspect-ratio: 1;
+  --_g: no-repeat radial-gradient(farthest-side,#45818e 90%,#0000);
+  background: var(--_g), var(--_g), var(--_g), var(--_g);
+  background-size: 40% 40%;
+  animation: l46 1s infinite;
+}
+@keyframes l46 {
+  0%  {background-position: 0 0      ,100% 0,100% 100%,0 100%}
+  40%,
+  50% {background-position: 100% 100%,100% 0,0    0   ,0 100%}
+  90%,
+  100%{background-position: 100% 100%,0 100%,0    0   ,100% 0}
+} 
+</style>
+<script type="module" src="well.js"></script>
+<script src="config.js"></script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+// Memanggil library khusus Firestore
+import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, getDoc, doc, serverTimestamp, updateDoc, writeBatch, deleteDoc} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app); 
+
+
+const lod = document.getElementById("loading");
+ const dt = {
+     dtsiswa:[],
+     dtkes:[],
+     tahunajaran:[],
+    
+ }  
+let siswaMap={};
+let kesMap={};
+
+let dnama="";
+let dkelas="";
+let dth="";
+let dbln="";
+let dumur="";
+let dtb="";
+let dbb="";
+let dimt="";
+let dsimt="";
+let id_pix="";
+let djk="";
+let daktif="";
+let dtd="";
+let dlila="";
+let dlp="";
+let dstb="";
+
+async function ambildata(){
+lod.style.display="flex";
+
+try{
+    const sisref = collection(db, "DataSiswa");
+    const kesref = collection(db, "Datakes");
+    
+  
+    
+    
+    
+    const [sis, kis] = await Promise.all([
+        getDocs(sisref),
+        getDocs(kesref),
+    ])
+    
+    dt.dtsiswa = sis.docs.map(doc=>({
+        id: doc.id,
+        ...doc.data()
+    }))
+    siswaMap = Object.fromEntries(dt.dtsiswa.map(s => [s.id, s])); 
+        dt.dtkes = kis.docs.map(doc=>({
+        id: doc.id,
+        ...doc.data()
+    }))
+    kesMap = Object.fromEntries(dt.dtkes.map(s => [s.id, s])); 
+
+    }catch(error){
+        console.log("error"+error);
+    }
+    await ambiltahun();
+    lod.style.display="none";
+}
+    
+    
+    
+async function ambiltahun(){
+
+lod.style.display="flex";
+    let thk = new Set();
+    dt.dtkes.forEach((doc)=>{
+       
+       
+       if(doc.TahunAjaran){
+           thk.add(doc.TahunAjaran);
+       }
+    })
+    
+    const dths = Array.from(thk).sort().reverse();
+    
+    dt.tahunajaran = dths;
+    
+    
+   lod.style.display="none";
+   
+}
+    
+ async function tambahkantahun(peminta){
+ 
+     lod.style.display="flex";
+     peminta.innerHTML = `<option value="">Pilih Tahun Ajaran yang Sudah Ada</option>`;
+     
+     dt.tahunajaran.forEach(doc=>{
+     
+         peminta.innerHTML+=`<option value="${doc}">${doc}</option>`;
+     })
+     lod.style.display="none";
+ }   
+    
+    
+ 
+ 
+ 
+ 
+ 
+ function tambahkelas(){
+     
+    const target= document.getElementById("p1kel");
+    
+    const dfkelas= [...new Set(dt.dtsiswa.map(b=>b.Kelas))].sort();
+    
+    target.innerHTML=`<option value="">Pilih Kelas</option>`
+     
+     dfkelas.forEach(i=>{
+         target.innerHTML+=`<option value="${i}">${i}</option>`
+     });
+ }
+  
+ document.getElementById("p1kel").addEventListener("change", function(){
+     if(document.getElementById("p1kel").value!=""){
+         
+         const dtnm = dt.dtsiswa.filter(i=>i.Kelas===document.getElementById("p1kel").value).filter(i=>i.Status==="Aktif");
+         const dfnama = dtnm.map(i=>({id:i.id, Nama:i.Nama})).sort((a,b)=>a.Nama - b.Nama);
+         
+         document.getElementById("p1nm").innerHTML=`<option value="">Pilih Nama</option>`
+     
+     dfnama.forEach(i=>{
+         document.getElementById("p1nm").innerHTML+=`<option value="${i.id}">${i.Nama}</option>`
+     });
+         document.getElementById("p1nm").disabled=false;
+     }else{
+         document.getElementById("p1nm").disabled=true; 
+         document.getElementById("p1nm").innerHTML=`<option value="">Pilih Nama</option>`
+         document.getElementById("p1jk").innerHTML="----"
+      document.getElementById("p1jdkes").innerHTML="---";
+         
+     }
+     document.getElementById("erdtkes").style.display="block"
+          document.getElementById("dtkesinfo").style.display="none";
+         
+         document.getElementById("yakinkahkes").style.display="none";
+ })
+  
+  document.getElementById("p1nm").addEventListener("change",function(){
+      if(document.getElementById("p1nm").value!=""){
+         const id_h = document.getElementById("p1nm").value;
+          
+          document.getElementById("p1jk").innerHTML=siswaMap[id_h].JK;
+          
+          const jdknya = dt.dtkes.filter(i=>i.Id_siswa===id_h).length;
+          
+          document.getElementById("p1jdkes").innerHTML=jdknya;
+          
+      }else{
+      document.getElementById("p1jk").innerHTML="----";
+      document.getElementById("p1jdkes").innerHTML="---";
+      }
+      document.getElementById("erdtkes").style.display="block"
+          document.getElementById("dtkesinfo").style.display="none";
+         
+         document.getElementById("yakinkahkes").style.display="none";
+  })
+  
+  
+  
+document.getElementById("bukap1").addEventListener("click", function(){
+    if(document.getElementById("p1kel").value!=""&&document.getElementById("p1nm").value!=""){
+        document.getElementById("erp1").style.display="none";
+        document.getElementById("datakes").style.display="block";
+        document.getElementById("datakes").scrollIntoView({behavior:"smooth"});
+        
+        id_pix=document.getElementById("p1nm").value;
+        dbln = document.getElementById("p1bln").value;
+        dnama = siswaMap[document.getElementById("p1nm").value].Nama;
+        
+        djk=siswaMap[document.getElementById("p1nm").value].JK;
+        daktif=siswaMap[id_pix].Status;
+        if(document.getElementById("pilpindahkelas").style.display==="block"&&document.getElementById("pilpindahkelas").value!=""){
+            dkelas=document.getElementById("pilpindahkelas").value;
+        }else{
+            dkelas=document.getElementById("p1kel").value;
+        }
+        
+        
+        if(document.getElementById("p1th").style.display!="none"&&document.getElementById("p1th").value!=""){
+            dth = document.getElementById("p1th").value;
+        }else if(document.getElementById("p1thbaru").style.display!="none"&&document.getElementById("p1thbaru").value!=""){
+            dth = document.getElementById("p1thbaru").value;
+        }
+        
+        
+    }else{
+        document.getElementById("datakes").style.display="none";
+       
+        document.getElementById("erp1").style.display="block";
+    }
+})
+  
+ document.getElementById("konfir").addEventListener("click", async function(){
+     if(document.getElementById("dtumur").value!=""&&document.getElementById("dtbb").value!=""&&document.getElementById("dttb").value!=""){
+         
+         document.getElementById("erdtkes").style.display="none"
+         document.getElementById("dtkesinfo").style.display="block";
+         document.getElementById("dtkesinfo").scrollIntoView({behavior:"smooth"});
+         document.getElementById("yakinkahkes").style.display="";
+    
+    await olahdatakes();
+    infokandt();
+    
+    
+    
+     }else{
+         document.getElementById("erdtkes").style.display="block"
+          document.getElementById("dtkesinfo").style.display="none";
+         
+         document.getElementById("yakinkahkes").style.display="none";
+     }
+ })
+  
+  document.getElementById("yakinkes").addEventListener("click", async function(){
+     
+      
+      if(document.getElementById("pilpindahkelas").style.display="block"){
+          pindahkankelas();
+      }
+      
+      await updatekes();
+  })
+
+
+document.getElementById("pindahkelas").addEventListener("click", function(){
+    if(document.getElementById("pindahkelas").innerHTML==="Ubah Data Kelas"){
+        document.getElementById("pilpindahkelas").style.display="block";
+        document.getElementById("pindahkelas").innerHTML="Batal Ubah Kelas";
+    }else{
+        document.getElementById("pilpindahkelas").style.display="none";
+        document.getElementById("pindahkelas").innerHTML="Ubah Data Kelas"
+    }
+})
+
+async function pindahkankelas(){
+    const path = doc(db, "DataSiswa", id_pix);
+    
+    try{
+        await updateDoc(path, {
+            Kelas: dkelas,
+           
+           UP_TIME: serverTimestamp(),
+        })
+    }catch(e){
+        console.log(e);
+        poerror();
+    }
+    
+}
+
+
+async function updatekes(){
+    
+     lod.style.display="flex";
+        const path = collection(db, "Datakes");
+        
+        try{
+        if(djk==="Laki laki"){
+            await addDoc(path, {
+                
+                Id_siswa: id_pix,
+            
+            Kelas: dkelas,
+            JK: djk,
+            Umur: dumur,
+            TB: dtb,
+            BB: dbb,
+            IMT: dimt,
+            StaIMT: dsimt,
+            Periode: dbln,
+            TahunAjaran: dth,
+            LP: dlp,
+            TD: dtd,
+            StaTB: dstb,
+            
+            UP_TIME: serverTimestamp()
+            })
+            
+            }else{
+                await addDoc(path, {
+                
+                Id_siswa: id_pix,
+            
+            Kelas: dkelas,
+            JK: djk,
+            Umur: dumur,
+            TB: dtb,
+            BB: dbb,
+            IMT: dimt,
+            StaIMT: dsimt,
+            Periode: dbln,
+            TahunAjaran: dth,
+            LP: dlp,
+            TD: dtd,
+            LILA: dlila,
+            StaTB: dstb,
+            
+            UP_TIME: serverTimestamp()
+            })
+            }
+            posukses();
+          
+        }catch(e){
+            poerror();
+            console.log(e);
+        }
+        lod.style.display="none";
+    }
+    
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+function infokandt(){
+    
+    document.getElementById("infonama").innerHTML=dnama;
+    document.getElementById("infokelas").innerHTML=dkelas;
+    document.getElementById("infoumur").innerHTML=dumur;
+    document.getElementById("infojk").innerHTML=djk;
+    document.getElementById("infoth").innerHTML=dth;
+    document.getElementById("infobln").innerHTML=dbln;
+    document.getElementById("infotb").innerHTML=dtb;
+    document.getElementById("infobb").innerHTML=dbb;
+    document.getElementById("infoimt").innerHTML=dimt;
+    document.getElementById("infosimt").innerHTML=dsimt;
+    document.getElementById ("infoaktif").innerHTML=daktif;
+    document.getElementById("infotd").innerHTML=dtd;
+    document.getElementById("infolp").innerHTML=dlp;
+    if(djk==="Perempuan"){
+    document.getElementById("infolila").innerHTML=dlila;
+    document.getElementById("khususperempuan").style.display="block";
+    
+        }else{
+            document.getElementById("khususperempuan").style.display="none";
+        }
+    document.getElementById("infostb").innerHTML=dstb;
+    document.getElementById("yakinkahkes").style.display="";
+    
+}
+  
+  
+  
+  
+  
+  
+  document.getElementById("yakinkahkes").addEventListener("click", function(){
+      
+      document.getElementById("popc").style.display="flex";
+      document.getElementById("pyakinkes").style.display="block";
+  })
+  
+  
+function olahdatakes(){
+    
+    dumur = document.getElementById("dtumur").value;
+    dtb= document.getElementById("dttb").value;
+    dbb=document.getElementById("dtbb").value;
+    dtd=document.getElementById("dttd").value;
+    dlila=document.getElementById("dtlila").value;
+    dlp=document.getElementById("dtlp").value;
+    
+    function kurus(){
+    
+    dsimt = "Kurus";
+    document.getElementById("infosimt").innerHTML=dsimt;
+    document.getElementById("infosimt").style.color="#653f22"
+}
+function normal(){
+    dsimt = "Normal";
+    document.getElementById("infosimt").innerHTML=dsimt;
+    document.getElementById("infosimt").style.color="#2d5624"
+}
+function berlebih(){
+    dsimt = "Berat Berlebih";
+    document.getElementById("infosimt").innerHTML=dsimt;
+    document.getElementById("infosimt").style.color="#65533b"
+}
+function obesitas(){
+    dsimt = "Obesitas";
+    document.getElementById("infosimt").innerHTML=dsimt;
+    document.getElementById("infosimt").style.color="#651919"
+}
+
+function umum(hasil){
+        
+            
+            
+        if(hasil<18.5){
+              kurus();
+        }else if(hasil>=18.5&&hasil<=24.9){
+            normal();
+            }else if(hasil>=25&&hasil<=29.9){
+            berlebih();
+         }else {
+            obesitas();
+         }
+         }
+         
+         function statusmt(kel, us, hasil){
+       
+           if(kel==="Laki laki"){
+             console.log(us==17);
+             if(us>19||us<5){
+                 umum(hasil);
+             }else if(us==5||us==6){ if(hasil<13){kurus()}else if(hasil<=16.5){normal()}else if(hasil<=18.5){berlebih()}else {obesitas()}
+             }else if(us==7){if(hasil<13){kurus()}else if(hasil<=17){normal()}else if(hasil<=19){berlebih()}else {obesitas()}
+             }else if(us==8){ if(hasil<13.25){kurus()}else if(hasil<=17.5){normal()}else if(hasil<=19.5){berlebih()}else {obesitas()}
+             }else if(us==9){ if(hasil<13.5){kurus()}else if(hasil<=18){normal()}else if(hasil<=20.5){berlebih()}else {obesitas()}
+             }else if(us==10){ if(hasil<13.75){kurus()}else if(hasil<=18.5){normal()}else if(hasil<=21.5){berlebih()}else {obesitas()}
+             }else if(us==11){if(hasil<14){kurus()}else if(hasil<=19){normal()}else if(hasil<=22.5){berlebih()}else {obesitas()}
+             }else if(us==12){if(hasil<14.5){kurus()}else if(hasil<=20){normal()}else if(hasil<=23.5){berlebih()}else {obesitas()}
+             }else if(us==13){if(hasil<15){kurus()}else if(hasil<=21){normal()}else if(hasil<=25){berlebih()}else {obesitas()}
+             }else if(us==14){ if(hasil<15.5){kurus()}else if(hasil<=21.5){normal()}else if(hasil<=26){berlebih()}else {obesitas()}
+             }else if(us==15){if(hasil<16){kurus()}else if(hasil<=22.5){normal()}else if(hasil<=27){berlebih()}else {obesitas()}
+             }else if(us==16){if(hasil<16.5){kurus()}else if(hasil<=23.5){normal()}else if(hasil<=27.5){berlebih()}else {obesitas()}
+             }else if(us==17){if(hasil<17){kurus() ;console.log("ic")}else if(hasil<=24){normal()}else if(hasil<=28.5){berlebih()}else {obesitas()}
+             }else if(us==18){if(hasil<17.25){kurus()}else if(hasil<=25){normal()}else if(hasil<=29){berlebih()}else {obesitas()}
+             }else if(us==19){ if(hasil<17.5){kurus()}else if(hasil<=25.5){normal()}else if(hasil<=29.5){berlebih()}else {obesitas()}
+             }
+             
+         }else if(kel==="Perempuan"){
+             if(us>19||us<5){
+                 umum(hasil);
+             }else if(us==5||us==6){let bek=12.5;let ben=17;let bup=19; if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+       
+         }else if(us==7){let bek=12.5;let ben=17.5;let bup=20; if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+       
+         }else if(us==8){let bek=13;let ben=18;let bup=20.5; if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+      
+         }else if(us==9){let bek=13;let ben=18.5;let bup=21;  if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+         
+         }else if(us==10){let bek=13.5;let ben=19;let bup=22; if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+         
+         }else if(us==11){let bek=13.75;let ben=19.75;let bup=23.75; if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+         
+         }else if(us==12){let bek=14.5;let ben=20.75;let bup=25; if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+         
+         }else if(us==13){let bek=15;let ben=21.75;let bup=26; if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+         
+         }else if(us==14){let bek=15.5;let ben=22.5;let bup=27;  if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+         
+         }else if(us==15){let bek=16;let ben=23.5;let bup=28; if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+         
+         }else if(us==16){let bek=16.5;let ben=24;let bup=28.5; if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+         
+         }else if(us==17){let bek=16.5;let ben=24.5;let bup=29; if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+         
+         }else if(us==18){let bek=16.5;let ben=24.75;let bup=29.5; if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+         
+         }else if(us==19){let bek=16.5;let ben=25;let bup=29.75; if(hasil<bek){kurus()}else if(hasil<=ben){normal()}else if(hasil<=bup){berlebih()}else{obesitas()}
+         
+     }}
+        
+    }
+    
+    let ti = dtb/100;
+        ti = ti*ti;
+        let hasil=dbb/ti;
+       hasil= hasil.toFixed(2);
+         dimt=hasil;
+         
+    statusmt(djk, dumur, hasil);
+    
+    
+    
+    
+    function tnormal(){
+         
+             document.getElementById("infostb").innerHTML="Normal"
+             
+             document.getElementById("infostb").style.color="#2d5624"
+     dstb=document.getElementById("infostb").innerHTML;
+         }
+         function stuntin(y){
+             document.getElementById("infostb").innerHTML="Stunting";
+             document.getElementById("infostb").style.color="#3b000c"
+             dstb=document.getElementById("infostb").innerHTML;
+             }
+            
+    
+    
+    if(djk==="Laki laki"){
+         let ss=dumur;
+         let tt= dtb;
+             if(ss===5){let tbn=101;if(tt<tbn){stuntin(tbn)}else{tnormal()}
+             } else if(ss===6){let tbn=105;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===7){let tbn=110;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===8){let tbn=115;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===9){let tbn=120;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===10){let tbn=125;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===11){let tbn=130;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===12){let tbn=135;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===13){let tbn=140;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===14){let tbn=147;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===15){let tbn=152;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===16){let tbn=157;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===17){let tbn=160;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===18){let tbn=161;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else {let tbn=162;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }
+             
+             }else if(djk==="Perempuan"){
+             let ss=dumur;
+             let tt=dtb;
+             if(ss===5){let tbn=100;if(tt<tbn){stuntin(tbn)}else{tnormal()}
+             } else if(ss===6){let tbn=105;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===7){let tbn=110;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===8){let tbn=115;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===9){let tbn=120;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===10){let tbn=125;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===11){let tbn=130;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===12){let tbn=137;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===13){let tbn=142;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===14){let tbn=145;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===15){let tbn=147;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===16){let tbn=149;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===17){let tbn=150;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else if(ss===18){let tbn=150;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }else {let tbn=150;if(tt<tbn){stuntin(tbn)}else{tnormal()} 
+             }
+             
+    
+    }
+    
+    
+    
+    
+    
+}
+ 
+ 
+document.getElementById("p2mautahunbaru").addEventListener("click",function(){
+    if(document.getElementById("p2mautahunbaru").innerHTML==="Tambah Tahun Ajaran Baru"){
+        document.getElementById("p2th").style.display="none";
+        document.getElementById("p2thbaru").style.display="block"
+        document.getElementById("p2mautahunbaru").innerHTML="Batal Tambah Tahun Ajaran"
+    }else{
+       document.getElementById("p2th").style.display="block";
+        document.getElementById("p2thbaru").style.display="none"
+        document.getElementById("p2mautahunbaru").innerHTML="Tambah Tahun Ajaran Baru"
+    }
+})
+ 
+ 
+document.getElementById("yakindb").addEventListener("click", function(){
+    if(document.getElementById("p2nm").value!=""&&document.getElementById("p2kel").value!=""&&document.getElementById("p2jk").value!=""&&document.getElementById("p2bln").value!=""){
+        if(document.getElementById("p2th").style.display!="none"&&document.getElementById("p2th").value!=""){
+           console.log("h"); document.getElementById("erp2").style.display="none";
+            
+            dnama = document.getElementById("p2nm").value;
+            dkelas= document.getElementById("p2kel").value;
+            djk = document.getElementById("p2jk").value;
+            dbln = document.getElementById("p2bln").value;
+            dth = document.getElementById("p2th").value;
+            
+            if(document.getElementById("cektidakaktif").style.display!="none"){
+                daktif = "Tidak aktif";
+            }else if(document.getElementById("cekaktif").style.display!="none"){
+                daktif="Aktif";}
+                
+               console.log("h")
+               document.getElementById("pinfonm").innerHTML=dnama;
+                document.getElementById("pinfokel").innerHTML=dkelas;
+                document.getElementById("pinfojk").innerHTML=djk;
+                document.getElementById("pinfoaktif").innerHTML=daktif;
+                
+                document.getElementById("popc").style.display="flex";
+                document.getElementById("pyakinsb").style.display="block";
+                
+                
+            
+            
+            
+            
+        }else if(document.getElementById("p2thbaru").style.display!="none"&&document.getElementById("p2thbaru").value!=""){
+            
+            
+            console.log("h"); document.getElementById("erp2").style.display="none";
+            
+            dnama = document.getElementById("p2nm").value;
+            dkelas= document.getElementById("p2kel").value;
+            djk = document.getElementById("p2jk").value;
+            dbln = document.getElementById("p2bln").value;
+            dth = document.getElementById("p2thbaru").value;
+            
+            if(document.getElementById("cektidakaktif").style.display!="none"){
+                daktif = "Tidak aktif";
+            }else if(document.getElementById("cekaktif").style.display!="none"){
+                daktif="Aktif";}
+                
+               console.log("h")
+               document.getElementById("pinfonm").innerHTML=dnama;
+                document.getElementById("pinfokel").innerHTML=dkelas;
+                document.getElementById("pinfojk").innerHTML=djk;
+                document.getElementById("pinfoaktif").innerHTML=daktif;
+                
+                document.getElementById("popc").style.display="flex";
+                document.getElementById("pyakinsb").style.display="block";
+                
+                
+            
+            
+        }else{
+            document.getElementById("erp2").style.display="block"
+        }
+        
+        
+    }else{
+        document.getElementById("erp2").style.display="block";
+    }
+})
+
+document.getElementById("yakinsb").addEventListener("click", function(){
+    updatasis();
+})
+
+async function updatasis(){
+    lod.style.display="flex";
+    try{
+        const path = await addDoc(collection(db, "DataSiswa"),{
+            Nama: dnama,
+            Kelas: dkelas,
+            Status: daktif,
+            JK: djk,
+            
+            
+            UP_TIME: serverTimestamp()
+        })
+        
+        id_pix = path.id;
+        posukses();
+        document.getElementById("lanjutdtkes").style.display="block";
+    ambildata();
+    }catch(e){
+        poerror();
+        console.log(e)
+    }
+    lod.style.display="none"
+}
+
+ 
+document.getElementById("o2").addEventListener("click", function(){
+    document.getElementById("fitur").style.display="none";
+    document.getElementById("p2").style.display="block"
+    tambahkantahun(document.getElementById("p2th"));
+})
+
+
+document.getElementById("lanjutdtkes").addEventListener("click", function(){
+    document.getElementById("datakes").style.display="block";
+    document.getElementById("yakinkahkes").style.display="none"
+    kosongkanpop();
+    document.getElementById("datakes").scrollIntoView({behavior:"smooth"})
+    document.getElementById("popc").style.display="none";
+})
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+  
+  document.getElementById("mautahun").addEventListener("click", function(){
+      if(document.getElementById("mautahun").innerHTML==="Tambah Tahun"){
+      document.getElementById("mautahun").innerHTML="Batal Tambah Tahun";
+          
+          document.getElementById("p1th").style.display="none";
+          document.getElementById("p1thbaru").style.display="block";
+      }else{
+          document.getElementById("p1th").style.display="block";
+          document.getElementById("p1thbaru").style.display="none";
+          document.getElementById("mautahun").innerHTML="Tambah Tahun";
+      }
+  })
+  
+  
+  
+  
+  document.getElementById("back?").addEventListener("click", function(){
+      if(document.getElementById("fitur").style.display!="none"){
+          
+          window.location.href="beranda.html";
+      }else if(document.getElementById("p1").style.display!="none"){
+          document.getElementById("p1").style.display="none";
+          document.getElementById("fitur").style.display="block";
+          document.getElementById("yakinkahkes").style.display="none";
+          document.getElementById("datakes").style.display="none"
+          document.getElementById("yakinkahkes").style.display="none"
+      }else if(document.getElementById("p2").style.display!="none"){
+          
+          document.getElementById("p2").style.display="none";
+          document.getElementById("fitur").style.display="block";
+          document.getElementById("yakinkahkes").style.display="none";
+          document.getElementById("datakes").style.display="none"
+          document.getElementById("yakinkahkes").style.display="none"
+      }
+  })
+  
+  
+  function poerror(){
+    kosongkanpop();
+       document.getElementById("popc").style.display="flex";
+       document.getElementById("poperor").style.display="block";
+        document.getElementById("batalpop").innerHTML="Kembali";
+        document.getElementById("batalpop").style.backgroundColor="#134f5c"
+        }
+    
+    function posukses(){
+    kosongkanpop();
+       document.getElementById("popc").style.display="flex";
+       document.getElementById("popsukses").style.display="block";
+        document.getElementById("batalpop").innerHTML="Kembali";
+        document.getElementById("batalpop").style.backgroundColor="#134f5c"
+        }
+        
+  document.getElementById("batalpop").addEventListener("click", function(){
+        kosongkanpop();
+        document.getElementById("popc").style.display="none";
+        
+    })  
+    
+    function kosongkanpop(){
+    document.getElementById("lanjutdtkes").style.display="none";
+    document.getElementById("pyakinsb").style.display="none"
+     document.getElementById("pyakinkes").style.display="none";
+        document.getElementById("batalpop").style.backgroundColor="#c6425a "
+        document.getElementById("batalpop").innerHTML="Batal";
+ document.getElementById("popsukses").style.display="none";
+ document.getElementById("poperor").style.display="none";
+    }
+    document.getElementById("o1").addEventListener("click",function(){
+        document.getElementById("p1").style.display="block";
+        document.getElementById("fitur").style.display="none";
+         const oo = document.getElementById("p1th")
+   tambahkantahun(oo);
+    })
+     
+     
+     document.getElementById("cektidakaktif").addEventListener("click",function(){
+         document.getElementById("cekaktif").style.display="block";
+         document.getElementById("cektidakaktif").style.display="none";
+ })   
+     
+     document.getElementById("cekaktif").addEventListener("click",function(){
+         document.getElementById("cekaktif").style.display="none";
+         document.getElementById("cektidakaktif").style.display="block";
+ })   
+     
+     
+     
+     
+     
+     
+     
+       
+     await ambildata(); 
+     
+     tambahkelas();
+     kosongkanpop();
+</script>
+</html>

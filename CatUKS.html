@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Catatan UKS</title>
+       <link rel="icon" type="image/png" href="MSlogo.png">
+       <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" type="text/css" href="distyle.css">
+
+</head>
+<body>
+     <header>
+         <span id="log?"class="material-symbols-outlined btn-arrow-back" onclick="window.location.href='beranda.html'">
+            arrow_back_ios
+        </span>
+        <h3>Catatan UKS</h3>
+    </header> 
+    
+    <div id="pilihan-data">
+        <div id="Pildata1" class="pildata">Catatan</div>
+        <div id="Pildata2" class="pildata" style="display:none">Grafik</div>
+    </div>
+    
+    
+    <div id="k1" style="display:">
+        <h3>Catatan UKS</h3>
+        <div id="pdt1" class="filterdata">
+            <label>Jenis Catatan</label>
+            <select id="jc" disabled>
+                <option value="">Pilih</option>
+            </select>
+            <label>Tahun Ajaran</label>
+            <select id="th1" disabled>
+                <option value="">Pilih Tahun</option>
+            </select>
+             <label>Periode</label>
+            <select id="bln1" disabled>
+                <option value="">Pilih Bulan</option>
+            </select>
+        </div>
+        
+        
+        <div id="fitur">
+            <div id="tambahcat" class="tombolfitur"><span class="material-symbols-outlined" class="icon">
+note_add
+</span>Tambah Catatan</div>
+        
+        <div id="refresh" class="tombolfitur"><span class="material-symbols-outlined" class="icon">
+autorenew
+</span>Refresh</div> 
+</div>
+
+
+
+
+
+        <p style="font-size:10px; margin: 0px; color: #fff; text-align: center;">Tekan untuk detail</p>
+        <div id="dafcat">
+            <div class="kartunya">
+                <h4>Rujukan</h4>
+                <p>Judul</p>
+            </div>
+            
+        </div>
+        
+   
+    </div>
+    
+    
+    
+    <div id="popc" style="display:none">
+        <div id="kpop">
+           
+                <span id="tutup" class="material-symbols-outlined" style="font-size: 40px">
+close_small
+</span> 
+            <div id="dtambahcat" style="display:none">
+                <h3 style="margin-top:0px; border-bottom: 2px solid #fff; align-self: center">Tambah Catatan</h3>
+                
+                <div class="sampingsaja">
+                    <label>Jenis Catatan</label>
+                    <select id="jctambah">
+                        <option value="">Pilih</option>
+                        <option value="maubaru">Tambah Baru</option>
+                    </select>
+                    <input type="text" id="jcbaru" placeholder="Tambah Jenis Baru" style="display:none">
+                    
+                    
+                     <label>Tahun Ajaran</label>
+                    <select id="thtambah">
+                        <option value="">Pilih</option>
+                        <option value="maubaru">Tambah Baru</option>
+                    </select>
+                    <input type="text" id="thbaru" placeholder="Tambah Tahun Baru" style="display:none">
+                    
+                   
+                    <label>Bulan</label>
+                    <select id="blntambah">
+                   <option value="">Pilih</option>
+                  <option value="Januari">Januari</option>
+                  <option value="Februari">Februari</option>
+                  <option value="Maret">Maret</option>
+                  <option value="April">April</option>
+                  <option value="Mei">Mei</option>
+                  <option value="Juni">Juni</option>
+                  <option value="Juli">Juli</option>
+                  <option value="Agustus">Agustus</option>
+                  <option value="September">September</option>
+                  <option value="Oktober">Oktober</option>
+                  <option value="November">November</option>
+                  <option value="Desember">Desember</option>
+                  
+                    </select>
+                    
+                    
+                     <label>Faskes</label>
+                    <select id="fktambah">
+                        <option value="">Pilih</option>
+                        <option value="maubaru">Tambah Baru</option>
+                    </select>
+                    <input type="text" id="fkbaru" placeholder="Faskes Baru" style="display:none">
+                   
+                   
+                   <h4 style="margin-top:0px; border-bottom: 2px solid #fff; align-self: center; color:#fff">Isi Catatan</h4>
+                   
+                   
+                   <p style="font-size:10px; color:#fff;text-align:center">Jika di pilihan catatan tidak ada, maka tambahkan jenis keterangan catatan baru</p>
+                   
+                   
+                   <form id="DP">
+                       <div class="ctom">
+                           
+                      
+                      <div id="tomboladdmenu">
+                           <span class="material-symbols-outlined" style="font-size:30px;">add_box</span>
+                        Tambah Catatan
+                      </div>
+                      
+                      
+                       </div>
+                       
+                       <div id="dataisicat"></div>
+                       
+                   
+                   
+                   
+                   
+                </div>
+                
+                <p id="peringatansubmit"style="font-size:13px; color:red; display:none">Mohon isi dengan lengkap</p>
+                 <button type="submit" class="yakintambah">Simpan</button>
+            </div>
+            </form>
+            <div id="pdtampil" style="display:none">
+                <div class="ctampil">
+                    <h3>Catatan</h3>
+                    <h4 id="ht2">---</h4>
+                    <h4 id="ht3">--</h4>
+                    <div class="ctdata">
+                        <table class="tabelinfo">
+                            <thead>
+                                <tr>
+                                <th>Catatan</th>
+                                <th>Jumlah</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelinfo">
+                                <tr>
+                                    <td>TAakakkakaka</td>
+                                    <td>hahahjaja</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="ctom2">
+                    <div id="tomedit?">
+                        <span class="material-symbols-outlined">
+edit_document
+</span>
+                    </div>
+                    <div id="tomhapus?">
+                        <span class="material-symbols-outlined">
+delete
+</span>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+        
+    </div>
+    
+    
+    <div id="popc2" style="display:none">
+        <div id="kpop2">
+            <div id="phapuskah2" style="display:none">
+                <h3>Yakin Hapus Catatan ini?</h3>
+                <h4 style="color:#fff" id="p2info">---</h4>
+            
+            
+                <button id="Yakinhapus2" class="tom" style="background-color: #134f5c; color:#fff">Hapus</button>
+            </div>
+
+                  
+        <div id="pedit2" style="display:none">
+            <h3 style="border-bottom: 1px solid #fff;text-align:center">Edit Data</h3>
+             <div class="sampingsaja">
+                    <label>Jenis Catatan</label>
+                    <select id="jcedit">
+                        <option value="">Pilih</option>
+                        <option value="maubaru">Tambah Baru</option>
+                    </select>
+                    <input type="text" id="jceditbaru" placeholder="Tambah Jenis Baru" style="display:none">
+                    
+                    
+                     <label>Tahun Ajaran</label>
+                    <select id="thedit">
+                        <option value="">Pilih</option>
+                        <option value="maubaru">Tambah Baru</option>
+                    </select>
+                    <input type="text" id="theditbaru" placeholder="Tambah Tahun Baru" style="display:none">
+                    
+                   
+                    <label>Bulan</label>
+                    <select id="blnedit">
+                   <option value="">Pilih</option>
+                  <option value="Januari">Januari</option>
+                  <option value="Februari">Februari</option>
+                  <option value="Maret">Maret</option>
+                  <option value="April">April</option>
+                  <option value="Mei">Mei</option>
+                  <option value="Juni">Juni</option>
+                  <option value="Juli">Juli</option>
+                  <option value="Agustus">Agustus</option>
+                  <option value="September">September</option>
+                  <option value="Oktober">Oktober</option>
+                  <option value="November">November</option>
+                  <option value="Desember">Desember</option>
+                  
+                    </select>
+                    
+                    
+                     <label>Faskes</label>
+                    <select id="fkedit">
+                        <option value="">Pilih</option>
+                        <option value="maubaru">Tambah Baru</option>
+                    </select>
+                    <input type="text" id="fkeditbaru" placeholder="Faskes Baru" style="display:none">
+                   
+                   </div>
+                   <form id="DPEDIT">
+                   <h3>Isi Catatan</h3>
+                   <div id="tomboladdeditmenu">
+                           <span class="material-symbols-outlined" style="font-size:30px;">add_box</span>
+                        Tambah Catatan
+                      </div>
+                      
+                      
+                       
+            <div id="dedit2">
+                
+                </div>
+                <p id="peringatansubmit2"style="font-size:13px; color:red; display:none">Mohon isi dengan lengkap</p>
+                <div>
+                <button class="yakintambah">Simpan Editan</button>
+            </div>
+            </form>
+        </div>
+
+            <button id="kembali2" class="tom">Kembali</button>
+    
+    
+    
+    
+        </div>
+      
+    </div>
+    <div id="popc3" style="display:none">
+        <div id="kpop3">
+            <div id="psukses" style="display:none">
+                <span class="material-symbols-outlined">
+check_circle
+</span>
+<h4>Berhasil</h4>
+            </div>
+            <div id="perror" style="display:none">
+                <span class="material-symbols-outlined">
+error
+</span>
+<h4>Error</h4>
+            </div>
+            <div id ="yakinkahedit2" style="display:none">
+                <h4>Edit Data Ini?</h4>
+                <p style="font-size:12px; color:#fff">Perhatikan Kembali data barunya</p>
+                <button class="yakintambah" id="editdah">Yakin</button>
+            </div>
+            
+            <button id="kembali3" class="tom">Kembali</button>
+        </div>
+    </div>
+    
+    
+    
+     <div class="cdispath" id="cdispath">
+       
+        <div class="cpesan" id="cpesan">
+            
+            <div class="dev">
+               </div>
+        </div>
+        <div id="loadmengirim" class="warni">Sedang mengirim....</div>
+        <div id="gagalmengirim" class="warni">Gagal Mengirim</div>
+           <div id="kcsalah" class="warni">Kata kunci tidak valid</div>
+      <div id="gagalmenghapus" class="warni">Operasi Hapus Riwayat Chat gagal</div>
+       <div id="berhasilmenghapus" class="warni">Berhasil Operasi Hapus Semua Riwayat Chat</div>
+        <div id="prosesmenghapus" class="warni">Proses Menghapus Semua Riwayat Chata.....</div>
+        
+        <input id="cadmin"type="text" placeholder="ketik...">
+    </div>
+    
+    <button id="bukaadacty"><span class="material-symbols-outlined"id="buk">
+forum
+</span><span class="material-symbols-outlined" style="display:none" id="tup">
+cancel
+</span>
+</button>
+    
+    <script type="module" src="disjs.js"></script>
+    
+</body>
+ <footer style="margin-top:auto; font-size: 10px; color: #7f8c8d;text-align:center">
+      <p>Ramadhana CreArtion || MAN 3 HSU</p>
+  </footer>
+</body>
+
+<div id="loading" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background-color: rgba(0,0,0,0.5);">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+        <div class="loader" style="margin: 0 auto;"></div>
+         <p style="color:#fff; margin-left:20px;font-family:Arial,Verdana;">Memuat.......</p>
+
+    </div>
+ </div>
+<style>
+    
+    body {
+            font-family: Arial, Verdana, sans-serif;
+            margin: 0px;
+            background-color:#ececec ;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.4)), url("BG1.png");
+            
+        }
+
+    header {
+            width:100%;
+            background-color: #134f5c;
+            color: #fff;
+            padding: 5px 2px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            margin: 0px;
+            position: relative; 
+        }
+     #awal h3 {
+            margin: 10px;
+            font-size: 1.2rem;
+        }
+    .btn-arrow-back {
+            position: absolute;
+            left: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        }  
+        #pilihan-data{
+            display: flex;
+            margin-top: 20px;
+            gap: 40px;
+            width: 100%;
+            justify-content: center;
+            
+            align-items: center;
+        }
+        .pildata{
+            font-weight: bold;
+            color: #fff;
+            border-bottom: 2px none #fff;
+            opacity:0.5;
+        }
+        #Pildata1{
+            border-bottom-style: solid;
+            opacity:1;
+        }
+         .loader {
+  width: 32px;
+  aspect-ratio: 1;
+  --_g: no-repeat radial-gradient(farthest-side,#45818e 90%,#0000);
+  background: var(--_g), var(--_g), var(--_g), var(--_g);
+  background-size: 40% 40%;
+  animation: l46 1s infinite;
+        }
+        @keyframes l46 {
+  0%  {background-position: 0 0      ,100% 0,100% 100%,0 100%}
+  40%,
+  50% {background-position: 100% 100%,100% 0,0    0   ,0 100%}
+  90%,
+  100%{background-position: 100% 100%,0 100%,0    0   ,100% 0}
+        } 
+        h3{
+            color: #fff;
+            text-align: center;
+        }
+        .filterdata{
+            padding: 10px;
+            background-color: #41818e;
+            margin: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 2px 3px 3px rgba(0,0,0,0.4);
+            
+            display: flex;
+            text-align: center;
+            justify-content: center; 
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        label{
+            color: #fff;
+            font-size:12px;
+            margin-top: 3px;
+        }
+        select{
+            background-color: rgba(0,0,0,0);
+            color: #fff;
+            border-radius: 10px;
+            margin-left: 10px;
+            margin-right: 20px;
+            font-size: 12px;
+            padding: 5px;
+            border-color: #fff;
+            width: 100px;
+            margin-bottom: 10px;
+        }
+        select:focus{
+            outline: none;
+            border-color: #2a43ff;
+        }
+        .tombolfitur{
+            color: #fff;
+            align-items: center;
+            display:flex;
+            font-size:12px;
+            margin-right: 20px;
+            justify-content: flex-end;
+            cursor: pointer;
+        }
+        #refresh{
+            align-self: flex-end;
+        }
+        .icon{
+            font-size: 30px;
+        }
+        #fitur{
+            width: 100%;
+            display:flex;
+             flex-direction: row;
+             align-items: center;
+             justify-content: space-between; 
+        }
+        #tambahcat{
+            margin-left: 20px;
+        }
+        #dafcat{
+            width:94%;
+            margin:10px;
+            height: 100vw;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: auto;
+        }
+        #popc, #popc2,#popc3{
+            
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 101vw;
+            height: 101vh;
+            background-color: rgba(0, 0, 0, 0.7); 
+            z-index: 2000; 
+            justify-content: center; 
+            align-items: center;     
+            margin: 0;
+            flex-direction: column;
+        }
+        #popc2{
+            z-index: 4000;
+        }
+        #popc3{
+            z-index:6000;
+        }
+        #kpop, #kpop2, #kpop3{
+            background-color: #41818e ;
+            padding: 15px;
+            border-radius: 15px;
+            width: 340px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-height: 80vh;
+            overflow-y: auto;
+            
+        }
+        .pnotif{
+            position:fixed;
+            background-color: #fff;
+            padding:5px;
+            z-index: 7000px;
+            top: 30%;
+            left: 15px;
+            width: 200px;
+            box-shadow: 2px 3px 3px rgba(0,0,0,0.4);
+            text-align: left;
+            font-size: 13px;
+            animation: notifmasuk 7s ease forwards;
+            border-radius: 3px 10px;
+            
+        }
+        .pnotif h4{
+            color: red;
+            display:flex;
+            flex-direction: row;
+            justify-content:flex-start;
+            align-items: center;
+            margin-top:5px;
+            margin-bottom: 5px;
+        }
+        @keyframes notifmasuk{
+            0%{
+                transform: translateX(-100px);
+                opacity:0;
+            }
+            15%,85%{
+                transform: translateX(0px);
+                opacity:1;
+            }
+            100%{
+                opacity:0;
+                transform: translateY(-100px);
+                opacity:0;
+            }
+        }
+        @keyframes upmasuk{
+            0%{
+                transform: translateY(+100px);
+                opacity: 0;
+            }
+            100%{
+                transform: TranslateY(0px);
+                opacity: 1;
+            }
+        }
+        .progres{
+            width:100%;
+            background-color: red;
+            margin-bottom:0px;
+            bottom: 0px;
+            left:0px;
+            height:2px;
+            transform-origin:left;
+            animation:bar 7s ease forwards;
+        }
+        @keyframes bar{
+            0%{
+                transform: scaleX(1);
+            }
+            100%{
+                transform: scaleX(0);
+            }
+        }
+        #kpop{
+            animation: upmasuk 0.5s ease forwards; 
+        }
+        #kpop2{
+            width: 330px;
+        }
+        #kpop3{
+            width:150px;
+        }
+        #kpop3 span{
+            color:#fff;
+            font-size:80px;
+        }
+        #kpop3 h4{
+            color:#fff;
+        }
+        .tom{
+            padding: 6px;
+            border-radius: 10px;
+            box-shadow: 2px 3px 3px rgba(0,0,0,0.4);
+            font-weight: bold;
+            background-color: #f2f2f2;
+            margin: 15px;
+        }
+        #tutup{
+            color: #fff;
+            border-right: 2px solid #fff;
+            padding: 0px;
+            align-self: flex-end;
+            
+        }
+        #dtambahcat{
+            align-items: center;
+            width:100%;
+            display: flex;
+            flex-direction: column;
+            
+        }
+        .sampingsaja{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            gap: 5px;
+        }
+        .sampingsaja select, #dedit2 select{
+            margin-left:0;
+            border-style: none;
+            border-bottom: 1px solid #fff;
+            border-radius: 0px;
+        }
+        .sampingsaja label, #dedit2 label{
+            font-size: 15px;
+            margin-top: 15px;
+        }
+        .sampingsaja input{
+            background-color: rgba(0,0,0,0);
+            border-style: none;
+            color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+        .sampingsaja input::placeholder, #dedit2 input::placeholder{
+            color: #fff;
+            opacity: 0.4;
+        }
+        .sampingsaja input:focus, #dedit2 input:focus{
+            outline: none;
+            font-size: 16px;
+        }
+        .yakintambah{
+            margin-top: 20px;
+            margin-bottom:20px;
+            background-color: rgba(0,0,0,0);
+            border: 1px solid #fff;
+           padding : 6px;
+           color: #fff;
+           border-radius: 4px;
+           cursor: pointer;
+        }
+        #tomboladdmenu, #tomboladdeditmenu{
+            color: #fff;
+            font-size:14px;
+            margin-top:0px;
+            display:flex;
+            align-items: center;
+            margin-left: auto;
+            align-self: flex-end;
+            cursor: pointer;
+        }
+         #tomboladdjeniscat{
+            color: #fff;
+            font-size:14px;
+            margin-top:0px;
+            display:flex;
+            align-items: center;
+            margin-left: auto;
+            align-self: flex-start;
+            margin-left: 0px;
+            cursor: pointer;
+        }
+        .ctom{
+            display:flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        .ctom2{
+            display:flex;
+            flex-direction:row;
+            color: #fff;
+            justify-content: flex-end;
+            gap: 20px;
+            margin-right: 10px;
+        }
+        .ctom2 div{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+        }
+        .ctom2 span{
+            font-size: 30px;
+        }
+        form{
+            display:flex;
+            width: 100%;
+            flex-direction: column;
+        }
+        .datainput{
+            display:flex;
+            flex-direction:row;
+            align-items: ;
+            border-bottom: 2px dashed grey;
+            margin-top: 7px;
+            justify-content: flex-start;
+            gap: 0px;
+            width: 100%;
+        }
+        .datainput input{
+            margin: 0px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #fff;
+            padding: 8px;
+            
+            
+        }
+        .datainput select{
+            margin-left: 10px;
+        }
+        .dinputnilai{
+            display: flex;
+            flex-direction: row;
+        }
+        .dicbaru{
+            width: 60px;
+        }
+        .dicnumber{
+            width: 40px;
+        }
+        #dataisicat, #dedit2{
+            display:flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .iconsampahp1{
+            display:flex;
+            border-style:solid;
+            padding: 8px;
+            width: 10px;
+            text-align:center;
+            height: 13px;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            background-color: #a1770d;
+            margin-left: 30px;
+            
+        }
+        .kartunya{
+            background-color: #ffffff;
+            margin:10px 10px;
+            padding:10px;
+            border-radius: 10px;
+            box-shadow: 2px 3px 3px rgba(0,0,0,0.4);
+            border-left: 10px solid #41818e;
+            border-bottom: 10px solid #41818e;
+            animation: slidemasuk 0.5s ease forwards;
+        }
+        @keyframes slidemasuk{
+            0%{
+                transform: translateX(-100px);
+                opacity:0;
+            }
+            100%{
+                transform: translateX(0px);
+                opacity:1;
+            }
+        }
+        .kartunya h4{
+            margin-top:7px;
+        }
+        .kartunya p{
+            font-size: 12px;
+            border-bottom: 1px solid grey;
+        }
+        .ctampil h4{
+            color: #fff;
+            margin: 3px;
+        }
+        .ctampil h3{
+            margin-bottom: 0px;
+        }
+        .ctdata{
+            text-align: left;
+            color: #fff;
+        }
+        .ctampil{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+        }
+        #pdtampil{
+            display:flex;
+            flex-direction: column;
+            width: 100%;
+            margin:0px;
+            border: 1px solid grey;
+            
+        }
+        .tabelinfo{
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+            margin-top: 12px;
+        }
+        .tabelinfo th, td{
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        .tabelinfo th{
+            background-color: #134f5c;
+        }
+        #pedit2{
+            display:flex;
+            flex-direction: column;
+            
+            width: 100%;
+        }
+        #dedit2 input{
+            background-color: rgba(0,0,0,0);
+            color:#fff;
+            
+        }
+         
+         
+</style>
+<script src="config.js"></script>
+<script type="module" src="well.js"></script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+ import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, getDoc, doc, serverTimestamp, updateDoc, writeBatch, deleteDoc, setDoc} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"; 
+ 
+    const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const urutanBulan = {
+    "Januari": 1, "Februari": 2, "Maret": 3, "April": 4, "Mei": 5, "Juni": 6,
+    "Juli": 7, "Agustus": 8, "September": 9, "Oktober": 10, "November": 11, "Desember": 12
+};
+
+
+const load = document.getElementById("loading");
+
+
+let dtcuks =[];
+
+async function ambildata(){
+    load.style.display="flex";
+    const semuadata = await getDocs(collection(db, "CatUKS"));
+    
+   dtcuks = await semuadata.docs.map(doc=>({
+        id:doc.id,
+        ...doc.data()
+    }))
+    
+    await tampilkandata(dtcuks);
+    ambiltipe();
+    const uaid = localStorage.getItem("uaid");
+    
+    load.style.display="none";
+}
+
+let dataygtampil = [];
+async function tampilkandata(datanya){
+load.style.display="flex";
+    
+    datanya = datanya.sort((a, b) => {
+  const dateA = a.UP_TIME?.toDate() || 0;
+  const dateB = b.UP_TIME?.toDate() || 0;
+  return dateB - dateA;
+});
+
+    
+    document.getElementById("dafcat").innerHTML = `<div></div>`
+    datanya.forEach(x=>{
+        
+        const kar = document.createElement('div');
+        kar.className = "kartunya";
+        
+        let dfield = [];
+        let keterangan ="";
+        
+        Object.keys(x).forEach((n, index)=>{
+            
+            if(n!="TA"&&n!="Tipe"&&n!="Periode"&&n!="id"&&n!="Faskes"&&n!="UP_TIME"){
+                n= n.replaceAll("_"," ")
+                dfield.push(n);
+                
+            }
+        })
+        
+        dfield.forEach((x,index)=>{
+            if(index>=1){
+                keterangan+=", ";
+            }
+                
+            keterangan +=x;
+            if(index+1===dfield.length){
+                keterangan+="."
+            }
+        })
+        
+        
+        
+        
+        kar.innerHTML = `<h4> Catatan ${x.Tipe} ${x.Periode} ${x.TA}</h4><p>${keterangan}</p>`
+        
+        
+        
+        kar.onclick = function(){
+            tampilkaninfonya(x);
+            dataygtampil = x;
+        }
+        
+        document.getElementById("dafcat").appendChild(kar);
+        
+    })
+    load.style.display="none";
+}
+
+
+
+function tampilkaninfonya(data){
+    
+    
+    document.getElementById("ht2").innerHTML=` ${data.Tipe} ${data.Periode} ${data.TA}`;
+    document.getElementById("ht3").innerHTML = "FasKes " + `${data.Faskes}`
+    
+    let dtkeys = [];
+    Object.keys(data).forEach(i=>{
+        if(i!="TA"&&i!="Periode"&&i!="Tipe"&&i!="Faskes"&&i!="id"&&i!="UP_TIME"){
+            dtkeys.push(i);
+        }
+    })
+    
+    
+    
+    document.getElementById("tabelinfo").innerHTML = `<tr></tr>`
+   
+   const tabel = dtkeys.map(ix=> `<tr>
+        <td>${ix.replaceAll("_"," ")}</td>
+        <td>${data[ix]}</td>
+    </tr>`
+    
+    ).join('');
+    
+    document.getElementById("tabelinfo").innerHTML = tabel;
+    
+    document.getElementById("popc").style.display="flex";
+    document.getElementById("pdtampil").style.display="flex";
+    
+    
+
+    
+}
+
+
+
+function ambiltipe(){
+    
+    const tipetipe = [...new Set(dtcuks.map(b=>b.Tipe))].sort();
+    
+    document.getElementById("jc").innerHTML=`<option value="">Pilih</option>`
+    tipetipe.forEach(i=>{
+        document.getElementById("jc").innerHTML+=`<option value="${i}">${i}</option>`
+    })
+    
+    document.getElementById("jc").disabled=false;
+}
+
+
+let dtcuks2=[];
+function ambiltahun(){
+    
+    const bat = document.getElementById("jc").value;
+    
+    dtcuks2 = dtcuks.filter(i=>i.Tipe===bat);
+    
+    const tahuntahun = [...new Set(dtcuks2.map(b=>b.TA))].sort().reverse();
+    
+    document.getElementById("th1").innerHTML = `<option value="">Pilih</option>`
+    tahuntahun.forEach(i=>{
+        document.getElementById("th1").innerHTML+= `<option value="${i}">${i}</option>`
+    })
+    
+    document.getElementById("th1").disabled=false;
+}
+
+let dtcuks3=[];
+function ambilbulan(){
+    
+    const bat = document.getElementById("th1").value;
+    
+    dtcuks3 = dtcuks.filter(i=>i.TA===bat);
+    
+    const bulanbulan = [...new Set(dtcuks3.map(b=>b.Periode))].sort((a,b)=>{
+            return urutanBulan[a]-urutanBulan[b]
+        });
+    
+    document.getElementById("bln1").innerHTML = `<option value="">Pilih</option>`
+    bulanbulan.forEach(i=>{
+        document.getElementById("bln1").innerHTML+= `<option value="${i}">${i}</option>`
+    })
+    
+    document.getElementById("bln1").disabled=false;
+}
+
+
+
+
+
+document.getElementById("jc").onchange = function(){
+    if(document.getElementById("jc").value!=""){
+        ambiltahun();
+        document.getElementById("th1").disabled=false;
+    }else{
+        document.getElementById("th1").disabled=true;
+        document.getElementById("th1").innerHTML = `<option value="">Pilih</option>`
+        document.getElementById("bln1").disabled=true;
+        document.getElementById("bln1").innerHTML = `<option value="">Pilih</option>`
+    
+    }
+    filtertampilan();
+    
+}
+document.getElementById("th1").onchange = function(){
+    if(document.getElementById("th1").value!=""){
+        ambilbulan();
+        document.getElementById("bln1").disabled=false;
+    }else{
+        document.getElementById("bln1").disabled=true;
+        document.getElementById("bln1").innerHTML = `<option value="">Pilih</option>`
+    }
+    filtertampilan();
+}
+
+document.getElementById("bln1").onchange= function(){
+    filtertampilan();
+}
+async function filtertampilan(){
+    
+    const dtipe = document.getElementById("jc").value;
+    const dth = document.getElementById("th1").value;
+    const dbln = document.getElementById("bln1").value;
+    
+    
+    const dtini = dtcuks.filter(i=>{
+        const ktipe = !dtipe || i.Tipe === dtipe;
+        const kth = !dth || i.TA === dth;
+        const kbln = !dbln || i.Periode === dbln;
+        
+        return ktipe && kth && kbln
+    })
+    
+    tampilkandata(dtini);
+}
+
+
+document.getElementById("tomboladdmenu").onclick = function(){
+    
+    buatketcatatan();
+   
+
+}
+function buatketcatatan(){
+
+    const boo = document.createElement('div');
+    boo.className = "datainput";
+    
+    
+   
+    boo.innerHTML =`<label>Catatan</label>
+                    <div clas="dinputnilai">
+                    <select onload="console.log('uu')" name="kunci[]" onchange='const yuhu= this.nextElementSibling;if(this.value===""){yuhu.style.display=""}else{yuhu.style.display="none"; yuhu.value=""}'>
+                    <option value="x">Pilih</option>
+                    <option value="">Tambahbaru</option>
+                    </select>
+                    
+                                <input type="text" name="kunci[]" placeholder="Ketik disini" style="display:none">
+             <input type="Number" placeholder="Nilai" name="Nilai[]" class="dicnumber">
+                        </div>
+                                <div class="iconsampahp1" onclick="this.parentElement.remove(); ">
+                                   <span class="material-symbols-outlined">
+delete
+</span></div> `;
+    
+    
+    
+    document.getElementById("dataisicat").appendChild(boo); 
+    
+    const path = boo.querySelector('select');
+    
+    ambilpilihan(path);
+   
+}
+
+
+
+document.getElementById("DP").onsubmit = function(e){
+e.preventDefault();  
+    const ii = new FormData(this);
+    let yy = ii.getAll("kunci[]");
+    let xx = ii.getAll("Nilai[]");
+    yy = yy.filter(i=> i.trim()!=="");
+    
+    const dentri = yy.map((x,i)=>[x.replaceAll(" ","_"), xx[i]]);
+    let dtipe="";
+    let dth="";
+    let dbln="";
+    let dfk ="";
+    if(document.getElementById("jcbaru").style.display!="none"){
+        dtipe = document.getElementById("jcbaru").value;
+    }else{
+        dtipe =document.getElementById("jctambah").value;
+    }
+    if(document.getElementById("thbaru").style.display!="none"){
+        dth=document.getElementById("thbaru").value;
+    }else{
+        dth=document.getElementById("thtambah").value;
+    }
+    dbln = document.getElementById("blntambah").value;
+    if(document.getElementById("fkbaru").style.display!="none"){
+        dfk=document.getElementById("fkbaru").value;
+    }else{
+        dfk=document.getElementById("fktambah").value;
+    }
+    
+    if(dtipe!=""&&dth!=""&&dbln!=""&&dfk!=""){
+        document.getElementById("peringatansubmit").style.display="none"
+    
+    const hed ={
+        Tipe: dtipe,
+        TA: dth,
+        Periode: dbln,
+        Faskes: dfk
+    }
+    
+    tambahdatabaru(hed, Object.fromEntries(dentri));
+    
+    }else{
+        document.getElementById("peringatansubmit").style.display="";
+    }
+    
+}
+
+
+async function tambahdatabaru(hed, bod){
+    load.style.display="flex";
+    const path = collection(db, "CatUKS");
+    
+    try{
+        await addDoc(path,{
+            ...hed,
+            ...bod,
+            
+            UP_TIME: serverTimestamp()
+        })
+        
+        document.getElementById("popc3").style.display="flex";
+        document.getElementById("psukses").style.display="";
+        ambildata();
+       tutupsemuapopc();
+    }catch(e){
+          document.getElementById("popc3").style.display="flex";
+        document.getElementById("perror").style.display="";
+        console.log(e);
+    }
+    load.style.display="none";
+}
+
+
+
+
+
+async function berikandata(){
+    document.getElementById("jctambah").innerHTML=`<option value="">Pilih</option>`;
+    document.getElementById("thtambah").innerHTML=`<option value="">Pilih</option>`;
+    document.getElementById("fktambah").innerHTML=`<option value="">Pilih</option>`;
+    
+    const djc = [...new Set(dtcuks.map(i=>i.Tipe))].sort();
+    
+    djc.forEach(i=>{
+        document.getElementById("jctambah").innerHTML+=`<option value="${i}">${i}</option>`;
+    })
+    
+    const dth = [...new Set(dtcuks.map(i=>i.TA))].sort();
+    
+    dth.forEach(i=>{
+        document.getElementById("thtambah").innerHTML+=`<option value="${i}">${i}</option>`;
+    })
+    
+    const dfk = [...new Set(dtcuks.map(i=>i.Faskes))].sort();
+   
+    dfk.forEach(i=>{
+        document.getElementById("fktambah").innerHTML+=`<option value="${i}">${i}</option>`;
+    })
+    
+    
+    document.getElementById("jctambah").innerHTML+=`<option value="maubaru">Tambah tipe</option>`;
+    document.getElementById("thtambah").innerHTML+=`<option value="maubaru">Tambah Tahun Ajaran</option>`;
+    document.getElementById("fktambah").innerHTML+=`<option value="maubaru">Tambah Faskes</option>`;
+    
+    
+}
+
+
+function ambilpilihan(x){
+        
+    let dtkeys = [];
+    dtcuks.forEach(io=>{
+    Object.keys(io).forEach(i=>{
+        if(i!="TA"&&i!="Periode"&&i!="Tipe"&&i!="Faskes"&&i!="id"&&i!="UP_TIME"){
+            dtkeys.push(i);
+        }
+    })
+    })
+    
+    dtkeys = [...new Set(dtkeys)].sort();
+    
+   
+    
+    x.innerHTML=`<option value="x">Pilih</option>`
+    
+    dtkeys.forEach(i=>{
+        x.innerHTML+=`<option value="${i}">${i.replaceAll("_"," ")}</option>`
+    })
+   
+   x.innerHTML+=`<option value="">TambahBaru</option>`
+    
+    }
+
+function isipiledit(){
+    
+    document.getElementById("jcedit").innerHTML=`<option value="">Pilih</option>`;
+    document.getElementById("thedit").innerHTML=`<option value="">Pilih</option>`;
+    document.getElementById("fkedit").innerHTML=`<option value="">Pilih</option>`;
+    
+    const djc = [...new Set(dtcuks.map(i=>i.Tipe))].sort();
+    
+    djc.forEach(i=>{
+        document.getElementById("jcedit").innerHTML+=`<option value="${i}">${i}</option>`;
+    })
+    
+    const dth = [...new Set(dtcuks.map(i=>i.TA))].sort();
+    
+    dth.forEach(i=>{
+        document.getElementById("thedit").innerHTML+=`<option value="${i}">${i}</option>`;
+    })
+    
+    const dfk = [...new Set(dtcuks.map(i=>i.Faskes))].sort();
+   
+    dfk.forEach(i=>{
+        document.getElementById("fkedit").innerHTML+=`<option value="${i}">${i}</option>`;
+    })
+    
+    
+    document.getElementById("jcedit").innerHTML+=`<option value="maubaru">Tambah tipe</option>`;
+    document.getElementById("thedit").innerHTML+=`<option value="maubaru">Tambah Tahun Ajaran</option>`;
+    document.getElementById("fkedit").innerHTML+=`<option value="maubaru">Tambah Faskes</option>`;
+    
+    
+    document.getElementById("jcedit").value=dataygtampil.Tipe;
+    document.getElementById("thedit").value=dataygtampil.TA;
+    document.getElementById("blnedit").value=dataygtampil.Periode;
+    document.getElementById("fkedit").value=dataygtampil.Faskes;
+
+}
+
+
+async function isipilcatedit(){
+    
+    let dtkeys = [];
+    Object.keys(dataygtampil).forEach(i=>{
+        if(i!="TA"&&i!="Periode"&&i!="Tipe"&&i!="Faskes"&&i!="id"&&i!="UP_TIME"){
+            dtkeys.push(i);
+        }
+    })
+    console.log(dtkeys)
+    
+    document.getElementById("dedit2").innerHTML ="";
+    dtkeys.forEach(i=>{
+        const boo = document.createElement('div');
+        boo.className = "datainput";
+        
+        boo.innerHTML = `<label>Catatan</label>
+                    <div clas="dinputnilai">
+                    <select onload="console.log('uu')" name="kunciedit[]" onchange='const yuhu= this.nextElementSibling;if(this.value===""){yuhu.style.display=""}else{yuhu.style.display="none"; yuhu.value=""}'>
+                    <option value="x">Pilih</option>
+                    <option value="">Tambahbaru</option>
+                    </select>
+                    
+                                <input type="text" name="kunciedit[]" placeholder="Ketik disini" style="display:none">
+             <input type="Number" placeholder="Nilai" name="Nilaiedit[]" class="dicnumber">
+                        </div>
+                                <div class="iconsampahp1" onclick="this.parentElement.remove(); ">
+                                   <span class="material-symbols-outlined">
+delete
+</span></div>`
+        
+        document.getElementById("dedit2").appendChild(boo);
+        const path = boo.querySelector('select');
+        const snap = boo.querySelector('.dicnumber');
+   
+   ambilpilihan(path);
+     path.value= i;
+       snap.value = dataygtampil[i];
+       
+       
+    })
+    
+    
+}
+
+
+
+function addeditpilcat(){
+    const boo = document.createElement('div');
+        boo.className = "datainput";
+        
+        boo.innerHTML = `<label>Catatan</label>
+                    <div clas="dinputnilai">
+                    <select onload="console.log('uu')" name="kunciedit[]" onchange='const yuhu= this.nextElementSibling;if(this.value===""){yuhu.style.display=""}else{yuhu.style.display="none"; yuhu.value=""}'>
+                    <option value="x">Pilih</option>
+                    <option value="">Tambahbaru</option>
+                    </select>
+                    
+                                <input type="text" name="kunciedit[]" placeholder="Ketik disini" style="display:none">
+             <input type="Number" name="Nilaiedit[]" placeholder="Nilai" class="dicnumber">
+                        </div>
+                                <div class="iconsampahp1" onclick="this.parentElement.remove(); ">
+                                   <span class="material-symbols-outlined">
+delete
+</span></div>`
+        
+        document.getElementById("dedit2").appendChild(boo);
+        
+        const path = boo.querySelector('select');
+        
+   
+   ambilpilihan(path);
+    
+}
+
+document.getElementById("DPEDIT").onsubmit = function(e){
+    e.preventDefault();  
+    const ii = new FormData(this);
+    let yy = ii.getAll("kunciedit[]");
+    let xx = ii.getAll("Nilaiedit[]");
+    yy = yy.filter(i=> i.trim()!=="");
+    
+    const dentri = yy.map((x,i)=>[x.replaceAll(" ","_"), xx[i]]);
+    
+    let dtipe="";
+    let dth="";
+    let dbln="";
+    let dfk ="";
+    if(document.getElementById("jceditbaru").style.display!="none"){
+        dtipe = document.getElementById("jceditbaru").value;
+    }else{
+        dtipe =document.getElementById("jcedit").value;
+    }
+    if(document.getElementById("theditbaru").style.display!="none"){
+        dth=document.getElementById("theditbaru").value;
+    }else{
+        dth=document.getElementById("thedit").value;
+    }
+    dbln = document.getElementById("blnedit").value;
+    if(document.getElementById("fkeditbaru").style.display!="none"){
+        dfk=document.getElementById("fkeditbaru").value;
+    }else{
+        dfk=document.getElementById("fkedit").value;
+    }
+    
+    if(dtipe!=""&&dth!=""&&dbln!=""&&dfk!=""){
+        document.getElementById("peringatansubmit2").style.display="none"
+    
+    const hed ={
+        Tipe: dtipe,
+        TA: dth,
+        Periode: dbln,
+        Faskes: dfk
+    }
+    
+    document.getElementById("popc3").style.display="flex";
+    document.getElementById("yakinkahedit2").style.display="";
+    
+    document.getElementById("editdah").onclick =function() {
+        editdatabaru(hed, Object.fromEntries(dentri));
+    }
+    
+    }else{
+        document.getElementById("peringatansubmit2").style.display="";
+    } 
+}
+
+async function editdatabaru(hed, bod){
+
+    load.style.display="flex";
+    
+    const path = doc(db, "CatUKS", dataygtampil.id);
+    
+    try{
+        await setDoc(path,{
+            ...hed,
+            ...bod,
+            
+            UP_TIME: serverTimestamp()
+            
+        })
+       tutupsemuapop3(); document.getElementById("popc3").style.display="flex";
+        document.getElementById("psukses").style.display="";
+        tutupsemuapopc();
+        tutupsemuapop2();
+        await ambildata();
+        popupref();
+    }catch(e){
+        tutupsemuapop3();
+        document.getElementById("popc3").style.display="flex";
+        document.getElementById("perror").style.display="";
+        console.log(e)
+    }
+    
+    load.style.display="none"
+    
+}
+
+
+
+
+
+
+async function hapusdataini(){
+    load.style.display="flex";
+    const path = doc(db, "CatUKS", dataygtampil.id);
+    
+    try{
+        await deleteDoc(path);
+        
+        document.getElementById("popc3").style.display="flex";
+        document.getElementById("psukses").style.display="";
+        ambildata();
+        tutupsemuapopc();
+        tutupsemuapop2();
+    }catch(e){
+        document.getElementById("popc3").style.display="flex";
+        document.getElementById("perror").style.display="";
+        console.log(e)
+        }
+    load.style.display="none"
+}
+
+
+document.getElementById("Yakinhapus2").onclick = function(){
+    hapusdataini();
+}
+
+
+
+
+document.getElementById("Pildata1").onclick= function(){
+    document.getElementById("Pildata1").style.borderBottomStyle="solid";
+    document.getElementById("Pildata2").style.borderBottomStyle="none";
+    document.getElementById("Pildata2").style.opacity="0.5";
+    document.getElementById("Pildata1").style.opacity="1";
+}
+document.getElementById("Pildata2").onclick= function(){
+    document.getElementById("Pildata2").style.borderBottomStyle="solid";
+    document.getElementById("Pildata1").style.borderBottomStyle="none";
+    document.getElementById("Pildata1").style.opacity="0.5";
+    document.getElementById("Pildata2").style.opacity="1";
+}
+
+function tutupsemuapopc(){
+    document.getElementById("popc").style.display="none";
+    document.getElementById("dtambahcat").style.display="none";
+    document.getElementById("pdtampil").style.display="none";
+    
+}
+document.getElementById("tutup").onclick = function(){
+    tutupsemuapopc();
+}
+document.getElementById("tambahcat").onclick = function(){
+    document.getElementById("dataisicat").innerHTML =``
+    buatketcatatan();
+    berikandata();
+    document.getElementById("popc").style.display="flex";
+    document.getElementById("dtambahcat").style.display="flex"
+}
+
+document.getElementById("jctambah").onchange = function(){
+    if(document.getElementById("jctambah").value==="maubaru"){
+        document.getElementById("jcbaru").style.display="block";
+    }else{
+        document.getElementById("jcbaru").style.display="none";
+    }
+}
+document.getElementById("thtambah").onchange =function(){
+    if(document.getElementById("thtambah").value==="maubaru"){
+        document.getElementById("thbaru").style.display="block";
+    }else{
+        document.getElementById("thbaru").style.display="none";
+    }
+}
+
+
+document.getElementById("fktambah").onchange = function(){
+    if(document.getElementById("fktambah").value==="maubaru"){
+        document.getElementById("fkbaru").style.display="block";
+    }else{
+        document.getElementById("fkbaru").style.display="none";
+    }
+}
+
+
+
+
+
+
+
+document.getElementById("jcedit").onchange= function(){
+    if(document.getElementById("jcedit").value==="maubaru"){
+        document.getElementById("jceditbaru").style.display="block";
+    }else{
+        document.getElementById("jceditbaru").style.display="none";
+    }
+}
+document.getElementById("thedit").onclick= function(){
+    if(document.getElementById("thedit").value==="maubaru"){
+        document.getElementById("theditbaru").style.display="block";
+    }else{
+        document.getElementById("theditbaru").style.display="none";
+    }
+}
+
+
+document.getElementById("fkedit").onchange= function(){
+    if(document.getElementById("fkedit").value==="maubaru"){
+        document.getElementById("fkeditbaru").style.display="block";
+    }else{
+        document.getElementById("fkeditbaru").style.display="none";
+    }
+}
+
+
+function tutupsemuapop2(){
+    document.getElementById("popc2").style.display="none";
+    document.getElementById("phapuskah2").style.display="none";
+    document.getElementById("pedit2").style.display="none"
+}
+document.getElementById("kembali2").onclick= function(){
+    tutupsemuapop2();
+}
+document.getElementById("tomedit?").onclick =function(){
+    document.getElementById("popc2").style.display="flex";
+    document.getElementById("pedit2").style.display="flex";
+    
+    isipiledit();
+    isipilcatedit();
+}
+document.getElementById("tomhapus?").onclick =function(){
+    document.getElementById("popc2").style.display="flex";
+    document.getElementById("phapuskah2").style.display="";
+    document.getElementById("p2info").innerHTML = dataygtampil.Tipe + " "+dataygtampil.Periode+" " + dataygtampil.TA;
+}
+
+
+document.getElementById("tomboladdeditmenu").onclick =function(){
+    addeditpilcat();
+}
+
+function tutupsemuapop3(){
+    document.getElementById("popc3").style.display="none";
+    document.getElementById("psukses").style.display="none";
+    document.getElementById("perror").style.display="none";
+    document.getElementById("yakinkahedit2").style.display="none";
+}
+
+document.getElementById("kembali3").onclick = function(){
+    tutupsemuapop3();
+}
+document.getElementById("refresh").onclick= function(){
+    ambildata();
+}
+
+function popupref(){
+console.log("hhh")
+    const notif = document.createElement('div');
+    notif.className = "pnotif"
+    notif.innerHTML=`
+    <h4> <span class="material-symbols-outlined">
+error
+</span>Perhatian </h4>
+    <p>Harap refresh tampilan data mencegah bug tampilan datanya</p>
+    <div class="progres"></div>`
+    
+    document.body.appendChild(notif);
+    
+    setTimeout(()=>{
+        notif.remove();
+    },7000)
+    
+}
+
+
+await ambildata();
+</script>
+
+</html>
