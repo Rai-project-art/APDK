@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="in">
+<head>
+    <link rel="icon" type="image/png" href="MSlogo.png">
+      <meta name="viewport" content="width=device-width" initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>Beranda Admin</title>
+    <link rel="stylesheet" type="text/css" href="distyle.css">
+</head>
+<body style="display:none">
+    <header>
+        
+        <h3>Pusat Data</h3>
+        
+        <span id="out?"class="material-symbols-outlined btn-logout">
+            logout
+        </span>
+        
+    </header>
+
+    <div id="kontenatas">
+        <a href="BPA PDK.PDF" download="Buku Panduan Admin PDK.pdf" style="display:block; flex-direction: column; items-align:center">
+        <button type="button"><span id="out?"class="material-symbols-outlined">
+            book_2
+        </span> Panduan Admin</button>
+        </a>
+        <img src="MSlogo.png" style="max-width:100%;">
+        <h3>Selamat Datang<a id="usad"></a></h3> 
+        <h4 style="margin-top:60px">Beranda Admin Pusat Data Kesehatan MAN 3 HSU</h4>
+    </div>
+    
+    <div id="konten">
+        <div id="opsi1" class="kon">
+            <h3>Perubahan Data yang Ada</h3>
+            <p>Ubah, Hapus data</p>
+        </div>
+        <div id="opsi2" class="kon">
+            <h3>Masukkan Data Baru</h3>
+            <p>Input Data Kesehatan Baru, Input Siswa Baru</p>
+        </div>
+        
+         <div id="opsi3" class="kon">
+            <h3>Diagram Data Kesehatan</h3>
+            <p>Lihat dan cetak diagram data kesehatan</p>
+        </div>
+        
+          <div id="opsi4" class="kon">
+            <h3>Tabel Data</h3>
+            <p>Lihat dan cetak Tabel data siswa, dan data kesehatan</p>
+            </div>
+            <div id="opsino5" class="kon" onclick="window.location.href='CatUKS.html'">
+                <h3>Catatan UKS MAN 3 HSU</h3>
+                <p>Lihat Catatan UKS</p>
+            </div>
+        
+    </div>
+    
+    <div id="kontenisi4" style="display:none">
+        <div id="4isi1" class="kon">
+            <h3>Tabel Data Siswa</h3>
+            <p>Lihat Data Utama Siswa (Nama, Kelas, JK, Status)</p>
+        </div>
+        <div id="4isi2" class="kon">
+            <h4>Tabel Data Kesehatan</h4>
+            <p>Lihat Data Kesehatan Siswa</p>
+        </div>
+    </div>
+    
+    
+    
+    
+    <div id="popc">
+        <div id="kpop">
+            <div id="log?">
+                <h4 style="margin-top:0px; font-size:20px">Log Out?</h4>
+                <button id="yakinlogout" class="tombol" style="background-color: #45818e; margin-bottom:40px; color:#fff">Log Out</button>
+            </div>
+        
+        <button id="tutuppop" style="background-color: #c6425a; color: #fff" class="tombol">Batal</button>
+        </div>
+    </div>
+    
+     <footer style="margin-top:auto; font-size: 10px; color: #7f8c8d;text-align:center">
+      <p>Ramadhana CreArtion || MAN 3 HSU</p>
+  </footer>
+  
+  
+  
+  
+  <div class="cdispath" id="cdispath">
+       
+        <div class="cpesan" id="cpesan">
+            
+            <div class="dev">
+               </div>
+        </div>
+        <div id="loadmengirim" class="warni">Sedang mengirim....</div>
+        <div id="gagalmengirim" class="warni">Gagal Mengirim</div>
+           <div id="kcsalah" class="warni">Kata kunci tidak valid</div>
+      <div id="gagalmenghapus" class="warni">Operasi Hapus Riwayat Chat gagal</div>
+       <div id="berhasilmenghapus" class="warni">Berhasil Operasi Hapus Semua Riwayat Chat</div>
+        <div id="prosesmenghapus" class="warni">Proses Menghapus Semua Riwayat Chata.....</div>
+        
+        <input id="cadmin"type="text" placeholder="ketik...">
+    </div>
+    
+    <button id="bukaadacty"><span class="material-symbols-outlined"id="buk">
+forum
+</span><span class="material-symbols-outlined" style="display:none" id="tup">
+cancel
+</span>
+</button>
+  
+  <script type="module" src="disjs.js"></script>
+</body>
+<div id="loading" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background-color: rgba(0,0,0,0.5);">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+        <div class="loader" style="margin: 0 auto;"></div>
+      <p style="color:#fff; margin-left:20px;font-family:Arial,Verdana;">Memuat.......</p>
+
+    </div>
+    </div>
+     <style>
+        body {
+            font-family: Arial, Verdana, sans-serif;
+            margin: 0px;
+            background-color:#ececec ;
+            background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.4)), url("BG1.png");
+            
+        }
+
+        header {
+            width:100%;
+            background-color: #134f5c;
+            color: #fff;
+            padding: 5px 2px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            margin: 0px;
+            position: relative; 
+        }
+
+       #awal h3 {
+            margin: 10px;
+            font-size: 1.2rem;
+        }
+
+        .btn-logout {
+            position: absolute;
+            right: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        #kontenatas {
+            margin-top: 30px;
+            margin-left: 20px;
+            color: #fff;
+        }
+        #popc{
+            
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 101vw;
+            height: 101vh;
+            background-color: rgba(0, 0, 0, 0.7); 
+            z-index: 9999; 
+            justify-content: center; 
+            align-items: center;     
+            margin: 0;
+        }
+        #kpop{
+            background-color: white ;
+            padding: 15px;
+            border-radius: 15px;
+            width: 120px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tombol{
+            padding: 6px 20px;
+            border-radius: 10px;
+            margin-left: 0px;
+            font-size: 15px;
+            border-color: grey;
+            box-shadow: 3px 4px 3px rgba(0,0,0,0.4);
+        }
+        .kon{
+            padding: 20px;
+            box-shadow: 6px 5px 1px rgba(0,0,0,0.6);
+            border-radius: 10px;
+            background-color: #45818e;
+            color: #fff;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        #konten, #kontenisi4{
+            margin-top:50px;
+            flex-direction: column;
+            margin-left: 30px;
+            margin-right: 20px;
+        }
+        
+.loader {
+  width: 32px;
+  aspect-ratio: 1;
+  --_g: no-repeat radial-gradient(farthest-side,#45818e 90%,#0000);
+  background: var(--_g), var(--_g), var(--_g), var(--_g);
+  background-size: 40% 40%;
+  animation: l46 1s infinite;
+}
+@keyframes l46 {
+  0%  {background-position: 0 0      ,100% 0,100% 100%,0 100%}
+  40%,
+  50% {background-position: 100% 100%,100% 0,0    0   ,0 100%}
+  90%,
+  100%{background-position: 100% 100%,0 100%,0    0   ,100% 0}
+} 
+</style>
+<script src="config.js"></script>
+<script type="module" src="well.js"></script>
+<script type="module">
+    
+     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+
+import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, getDoc, doc, serverTimestamp, updateDoc} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app); 
+const auth = getAuth(app);
+
+document.getElementById("yakinlogout").addEventListener("click", function(){
+    signOut(auth).then(() => {
+        window.location.href = "index.html";
+    });
+})
+    
+    function kosongkanpop(){
+        document.getElementById("log?").style.display="none";
+    }
+    
+    document.getElementById("tutuppop").addEventListener("click", function(){
+        kosongkanpop();
+        document.getElementById("popc").style.display="none";
+    })
+    
+    document.getElementById("out?").addEventListener("click",function(){
+        document.getElementById("popc").style.display="flex";
+        document.getElementById("log?").style.display="block";
+    })
+    
+    
+    document.getElementById("opsi2").addEventListener("click", function(){
+        window.location.href ="input-data.html";
+    })
+    document.getElementById("opsi1").addEventListener("click",function (){
+        window.location.href ="ubah-data.html";
+    })
+    
+document.getElementById("opsi3").addEventListener("click", function(){
+    window.location.href="diagram.html";
+})
+
+document.getElementById("opsi4").addEventListener("click", function(){
+   window.location.href="Tabel Data.html";
+   
+ })
+    
+    const uaid = localStorage.getItem("uaid");
+    const dtpath = await getDoc(doc(db,"users",uaid));
+    
+    document.getElementById("usad").innerHTML = " "+ dtpath.data().username + " || " +dtpath.data().callsign;
+    
+    document.body.display="none";
+</script>
+</html>
