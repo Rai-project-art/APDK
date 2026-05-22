@@ -1,0 +1,2244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <link rel="icon" type="image/png" href="MSlogo.png">
+       <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Diagram Data Kesehatan Siswa </title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+         <span id="back?"class="material-symbols-outlined btn-arrow-back">
+            arrow_back_ios
+        </span>
+        <h3>Diagram Data Kesehatan Siswa</h3>
+    </header>
+    <div id="pilih" class="dbox">
+        
+        <label>Tahun Ajaran</label>
+        <select id="th">
+            <option value="">Pilih Tahun</option>
+        </select>
+        <label>Periode</label>
+        <select id="bln" disabled>
+            <option value="">Pilih Bulan</option>
+        </select>
+        <label>Kelas</label>
+        <select id="kelas" disabled>
+            <option value="">Pilih Kelas</option>
+        </select>
+        
+    </div>
+    
+    <button id="print" class="tombol">
+        <span class="material-symbols-outlined" style="font-size:20px">
+print
+</span>
+    </button>
+    
+    
+    <div id="data" style="margin:10px">
+        <div id="datatunggal">
+        <h2 style="text-align:center">Diagram Data Kesehatan Siswa</h2>
+        <h4>Tahun Ajaran: <a id="infoth">Unknown</a></h4>
+        <h4>Bulan: <a id="infobln">Unknown</a></h4>
+        <h4>Kelas: <a id="infokelas">Unknown</a></h4>
+        
+        <div id="dia">
+            
+            <canvas id="gsimt" style="max-height: 200px; max-width: 350px"></canvas>
+            <canvas id="gsstun" style="max-height: 200px; max-width: 350px"></canvas>
+            
+            <canvas id="gtb" style="max-height: 200px; max-width: 350px"></canvas>
+            
+            <canvas id="gbb" style="max-height: 200px; max-width: 350px"></canvas>
+            
+              <canvas id="glp" style="max-height: 200px; max-width: 350px"></canvas>
+              
+              
+               <canvas id="glila" style="max-height: 200px; max-width: 350px"></canvas>
+            
+            <canvas id="gimt" style="max-height: 200px; max-width: 350px"></canvas> 
+            
+        <canvas id="gtd" style="max-height: 300px; max-width: 350px"></canvas>
+
+        </div>
+        <div id="ctb">
+        <table class="min-w-full bg-white">
+                <thead class="bg-blue-600 text-white">
+                    <tr>
+               
+            <th>Jumlah Data</th>
+            <th>Laki laki</th>
+            <th>Perempuan</th>           
+            <th>Stunting</th>
+            <th>Kurus</th>
+           
+            <th>Normal</th>
+            <th>Berat Berlebih</th>
+            <th>Obesitas</th>
+            
+ </div>           
+             
+                    </tr>
+                </thead>
+                <tbody id="tabelindi" class="text-gray-700 italic">
+                    </tbody>
+            </table>
+       </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="print-only" style="display:none">
+  
+       <p style="font-size:10px"id="infoTanggal"></p>
+    <p style="font-size: 12px;margin-bottom:2px; margin-top:10px">Data dari: Pusat Data Kesehatan Siswa Situs MANTA SIGAP</p>
+    <img src="qr direct.png" style="width: 100px;">
+</div>
+    
+    
+    
+    
+            <div id="popc" style="display: none">
+        <div id="kpop">
+           <p>Kerena pembatasan di google sites, untuk fitur print hanya dapat digunakan di website kedua</p>
+            <button id="kunjungi" class="tombol2">Kunjungi Web Kedua</button>
+        <button id="batalpop" style="background-color: #c6425a; color: #fff" class="tombol2">Batal</button>
+        </div>
+    </div>
+    
+    
+    
+</body>
+ <footer style="margin-top:auto; font-size: 10px; color: #7f8c8d;text-align:center">
+      <p>Ramadhana CreArtion || MAN 3 HSU</p>
+  </footer>
+</body>
+
+<div id="loading" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background-color: rgba(0,0,0,0.5);">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+        <div class="loader" style="margin: 0 auto;"></div>
+         <p style="color:#fff; margin-left:20px;font-family:Arial,Verdana;">Memuat.......</p>
+
+    </div>
+ </div>
+<style>
+    body {
+            font-family: Arial, Verdana, sans-serif;
+            margin: 0px;
+            background-color:#ececec ;
+            min-height: 100vh;
+            
+            
+        }
+
+    header {
+            width:100%;
+            background-color: #134f5c;
+            color: #fff;
+            padding: 5px 2px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            margin: 0px;
+            position: relative; 
+        }
+     #awal h3 {
+            margin: 10px;
+            font-size: 1.2rem;
+        }
+    .btn-arrow-back {
+            position: absolute;
+            left: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        } 
+        
+        .dbox{
+            padding: 10px;
+            display: flex;
+            background-color: #41818e;
+            flex-direction: row;
+            gap: 20px;
+            color: #fff;
+            flex-wrap: wrap;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: center;
+            justify-content: center;
+            items-align: center;
+            
+        }
+        select{
+            background-color: #41818e;
+            border-radius: 10px;
+            padding: 8px;
+            color: #fff;
+            border-color:#fff;
+            font-size: 13px;
+        }
+        select:focus{
+            outline: none;
+            border-color: #2a43ff;
+        }
+        label{
+            text-align: center;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+        .loader {
+  width: 32px;
+  aspect-ratio: 1;
+  --_g: no-repeat radial-gradient(farthest-side,#45818e 90%,#0000);
+  background: var(--_g), var(--_g), var(--_g), var(--_g);
+  background-size: 40% 40%;
+  animation: l46 1s infinite;
+}
+@keyframes l46 {
+  0%  {background-position: 0 0      ,100% 0,100% 100%,0 100%}
+  40%,
+  50% {background-position: 100% 100%,100% 0,0    0   ,0 100%}
+  90%,
+  100%{background-position: 100% 100%,0 100%,0    0   ,100% 0}
+} 
+
+.tombol{
+    display:flex;
+    flex-direction:row;
+    gap: 10px;
+    justify-content: center;
+    items-align: center;
+    padding: 3px;
+    margin: 10px;
+    border-radius:10px;
+    box-shadow: 2px 3px 4px rgba(0,0,0,0.7);
+}
+#dia{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+@media print{
+
+.print-only { display: block !important; }
+body{width: 1000px; margin-left:20px; }
+         #pilih, header, #print, footer{ display: none !important; }
+       
+
+
+ 
+
+    
+.print-only { display: none; }
+}
+table {width: 100%; border-collapse: collapse; margin-top: 20px;border-style: solid; border-color: #000; }
+ th, td { padding: 12px; text-align: center; border-bottom: 1px solid #eee; border-style: solid; border-color: #ddd }
+        th { background: #45818e; color: #f2f2f2; text-transform: uppercase; font-size: 13px; }
+        tr:hover { background: #f1f8ff; }
+        
+ .tdj{
+    padding: 10px 10px;
+    font-weight: 500;
+    font-size:12px;
+}
+.tdb{
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 12px;
+}
+#ctb, #ctbindi{
+    width: 99%;
+    
+     overflow-x: auto;
+    border: 1px solid #eee;
+    -webkit-overflow-scrolling: touch; 
+    margin-bottom:100px;
+}       
+
+#popc{
+            
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 101vw;
+            height: 101vh;
+            background-color: rgba(0, 0, 0, 0.7); 
+            z-index: 9999; 
+            justify-content: center; 
+            align-items: center;     
+            margin: 0;
+        }
+        #kpop{
+            background-color: white ;
+            padding: 15px;
+            border-radius: 15px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tombol2{
+            padding: 6px 20px;
+            border-radius: 10px;
+            margin-left: 0px;
+            font-size: 15px;
+            border-color: grey;
+            box-shadow: 3px 4px 3px rgba(0,0,0,0.4);
+            background-color: #134f5c;
+            margin: 15px 0px;
+            color: #fff;
+        } 
+
+</style>
+
+
+
+
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+
+import { getFirestore, collection, addDoc, getDocs, query, where, orderBy} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAw7vzgjvLQfCklMKvdQYFQb7MKpNn8lL4",
+  authDomain: "pusat-data-96c4b.firebaseapp.com",
+  projectId: "pusat-data-96c4b",
+  storageBucket: "pusat-data-96c4b.firebasestorage.app",
+  messagingSenderId: "825366165936",
+  appId: "1:825366165936:web:e8a91875aa8d4a43c33e75"
+};
+
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
+let dtkes = [];
+const urutanBulan = {
+    "Januari": 1, "Februari": 2, "Maret": 3, "April": 4, "Mei": 5, "Juni": 6,
+    "Juli": 7, "Agustus": 8, "September": 9, "Oktober": 10, "November": 11, "Desember": 12
+};
+
+const dtahun = document.getElementById("th");
+const dbulan = document.getElementById("bln");
+const dpdt = document.getElementById("pdt");
+const load = document.getElementById("loading");
+const dkelas = document.getElementById("kelas");
+let myChartTD = null;
+let myChartTB = null;
+let myChartBB = null;
+let myChartLP = null;
+let myChartLILA = null;
+let myChartIMT = null;
+let myChartSIMT = null;
+let myChartSSTUN = null;
+
+async function ambildata(){
+    load.style.display="flex";
+    const fd = await getDocs(collection(db, "Datakes"));
+    dtkes = fd.docs.map(doc=>({id:doc.id, ...doc.data()}));
+    
+    await muattahun();
+    
+    load.style.display="none";
+}
+
+
+function muattahun(){
+    const dtahunnya = [...new Set(dtkes.map(b=>b.TahunAjaran))].sort().reverse();
+    
+    dtahun.innerHTML=`<option value="">Semua Tahun</option>`;
+    
+    dtahunnya.forEach(i=>{
+        dtahun.innerHTML+=`<option value="${i}">${i}</option>`
+    })
+     
+}
+
+let df1=[];
+dtahun.onchange = function(){
+    
+    if(dtahun.value!=""){
+        df1 = dtkes.filter(b=>b.TahunAjaran===dtahun.value);
+        
+        const ytt = [...new Set(df1.map(i=>i.Periode))].sort((a,b)=>{
+            return urutanBulan[a]-urutanBulan[b]
+        });
+        
+        dbulan.innerHTML=`<option value="">Semua Bulan</option>`;
+        
+        ytt.forEach(i=>{
+            dbulan.innerHTML+=`<option value="${i}">${i}</option>`
+        })
+        olahumum2();
+        dbulan.disabled=false;
+        
+        
+        dkelas.disabled=true;
+        dkelas.innerHTML=`<option value="">Semua Kelas</option>`;
+    }else{
+        dbulan.disabled=true;
+        dbulan.innerHTML=`<option value="">Semua Bulan</option>`;
+        olahumum();
+        dkelas.disabled=true;
+        dkelas.innerHTML=`<option value="">Semua Kelas</option>`;
+    }
+}
+
+let df2=[];
+dbulan.onchange = function(){
+    if(dbulan.value!=""){
+        
+        df2 = df1.filter(i=>i.Periode===dbulan.value);
+        
+        const ytt = [...new Set(df2.map(i=>i.Kelas))].sort();
+    
+        dkelas.innerHTML=`<option value="">Semua Kelas</option>`;
+        
+        ytt.forEach(i=>{
+            dkelas.innerHTML+=`<option value="${i}">${i}</option>`
+        })
+        olahumum3();
+        dkelas.disabled=false;
+    }else{
+        dkelas.disabled=true;
+        dkelas.innerHTML=`<option value="">Semua Kelas</option>`;
+        olahumum2();
+        
+    }
+}
+
+dkelas.onchange = function(){
+    if(dkelas.value!=""){
+        
+        olahdata();
+    }else{
+        olahumum3();
+    }
+}
+
+
+
+
+async function olahdata(){
+    
+    let totalbb=0;
+    let totaltb=0;
+    let stunting=0;
+    let totalumur=0;
+    let totallila=0;
+    let totallp=0;
+    let totalsistolik=0;
+    let totaldiastolik=0;
+    let totallk=0;
+    let totalpr=0;
+    let totalimt=0;
+    
+    let totalkurus=0;
+    let totalnormal=0;
+    let totalberatb=0;
+    let totalobe=0;
+    
+    
+    
+    let jdta=0;
+    
+    const dtnya = dtkes.filter(i=>i.TahunAjaran===dtahun.value&&i.Periode===dbulan.value&&i.Kelas===dkelas.value);
+    
+    dtnya.forEach(i=>{
+        
+        totalbb+=Number(i.BB);
+        totaltb+=Number(i.TB);
+        totallp+=Number(i.LP);
+        totalumur+=Number(i.Umur);
+        totalimt+=Number(i.IMT);
+        
+        let TD = i.TD;
+        TD = TD.replace(/\s+/g, '');
+        TD = TD.split('/');
+        
+        totalsistolik+=Number(TD[0]);
+        totaldiastolik+=Number(TD[1]);
+        
+        
+        if(i.StaTB==="Stunting"){
+            stunting++;
+        }
+        if(i.JK==="Perempuan"){
+            totallila+=Number(i.LILA);
+            totalpr++;
+        }else{
+            totallk++;
+        }
+        if(i.StaIMT==="Kurus"){totalkurus++};
+        if(i.StaIMT==="Normal"){totalnormal++};
+        if(i.StaIMT==="Berat Berlebih"){totalberatb++};
+        if(i.StaIMT==="Obesitas"){totalobe++};
+        
+        
+        jdta++;
+        
+        
+    })
+    
+    
+    
+    
+    
+    document.getElementById("infokelas").innerHTML=dkelas.value;
+    document.getElementById("infobln").innerHTML=dbulan.value;
+    document.getElementById("infoth").innerHTML=dtahun.value;
+    
+    
+    let sis= (totalsistolik/jdta).toFixed(1);
+    let dia= (totaldiastolik/jdta).toFixed(1);
+    
+    
+    
+    
+    isitabel(jdta, totallk, totalpr, stunting, totalkurus, totalnormal, totalberatb, totalobe);
+    
+    
+    
+    const path = [totalkurus, totalnormal, totalberatb, totalobe]
+const plabel = ["Kurus", "Normal", "Berat Berlebih","Obesitas" ]
+const csimt = document.getElementById('gsimt').getContext('2d');
+  
+  if (myChartSIMT) myChartSIMT.destroy();
+  
+ myChartSIMT= new Chart(csimt, {
+    type: 'bar', // Gunakan line chart untuk melihat tren
+    data: {
+            labels: plabel,
+            datasets: [{
+                label: `Rata-rata Status IMT Kelas ${dkelas.value} `,
+                data: path,
+                backgroundColor: [ '#ba451f', '#3498db','#ba911f','#ba2f3e'],
+                borderRadius: 8,
+                barPercentage: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: jdta, 
+                    title: { display: true, text: 'jumlah' }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                title:{
+                    display: true,
+                    text: 'Rata rata Status IMT',
+                    font:{
+                        size: 15
+                    }
+                }
+            }
+    }
+  });
+  
+  const cpath = [stunting, jdta-stunting]
+const cplabel = ["Stunting","Normal" ]
+const csstu = document.getElementById('gsstun').getContext('2d');
+  
+  if (myChartSSTUN) myChartSSTUN.destroy();
+  
+ myChartSSTUN= new Chart(csstu, {
+    type: 'bar', // Gunakan line chart untuk melihat tren
+    data: {
+            labels: cplabel,
+            datasets: [{
+                label: `Rata-rata Status TB Kelas ${dkelas.value} `,
+                data: cpath,
+                backgroundColor: [ '#ba451f', '#3498db'],
+                borderRadius: 8,
+                barPercentage: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: jdta, 
+                    title: { display: true, text: 'jumlah' }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                title:{
+                    display: true,
+                    text: 'Rata rata Status TB',
+                    font:{
+                        size: 15
+                    }
+                }
+            }
+        
+    }
+  });
+    
+    
+    const ctx = document.getElementById('gtd').getContext('2d');
+
+    if (myChartTD) myChartTD.destroy();
+
+    myChartTD = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Sistolik (Atas)', 'Diastolik (Bawah)'],
+            datasets: [{
+                label: `Rata-rata Tekanan Darah Kelas ${dkelas.value} `,
+                data: [sis, dia],
+                backgroundColor: [ '#3498db'],
+                borderRadius: 8,
+                barPercentage: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 200, 
+                    title: { display: true, text: 'mmHg' }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                title:{
+                    display: true,
+                    text: 'Rata rata Tekanan Darah',
+                    font:{
+                        size: 15
+                    }
+                }
+            }
+        }
+    });
+    
+    
+    
+    
+    const rtb = (totaltb/jdta).toFixed(1);
+    
+    
+    const otb = document.getElementById('gtb').getContext('2d');
+
+    if (myChartTB) myChartTB.destroy();
+
+    myChartTB = new Chart(otb, {
+        type: 'bar',
+        data: {
+            labels: ['Tinggi Badan'],
+            datasets: [{
+                label: `Rata-rata TB Kelas ${dkelas.value} `,
+                data: [rtb],
+                backgroundColor: ['#3498db'], // Merah & Biru
+                borderRadius: 8,
+                barPercentage: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 200, 
+                    title: { display: true, text: 'cm' }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                title:{
+                    display: true,
+                    text: 'Rata rata TB',
+                    font:{
+                        size: 15
+                    }
+                }
+            }
+        }
+    });
+    
+    
+    
+    
+    
+     const rbb = (totalbb/jdta).toFixed(1);
+    
+    
+    const obb = document.getElementById('gbb').getContext('2d');
+
+    if (myChartBB) myChartBB.destroy();
+
+    myChartBB = new Chart(obb, {
+        type: 'bar',
+        data: {
+            labels: ['Berat Badan'],
+            datasets: [{
+                label: `Rata-rata BB Kelas ${dkelas.value} `,
+                data: [rbb],
+                backgroundColor: ['#3498db'], // Merah & Biru
+                borderRadius: 8,
+                barPercentage: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 120, 
+                    title: { display: true, text: 'kg' }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                title:{
+                    display: true,
+                    text: 'Rata rata BB',
+                    font:{
+                        size: 15
+                    }
+                }
+            }
+        }
+    });
+    
+    
+    
+    
+    const rlp = (totallp/jdta).toFixed(1);
+    
+    
+    const olp = document.getElementById('glp').getContext('2d');
+
+    if (myChartLP) myChartLP.destroy();
+
+    myChartLP = new Chart(olp, {
+        type: 'bar',
+        data: {
+            labels: ['Lingkar Perut'],
+            datasets: [{
+                label: `Rata-rata LP Kelas ${dkelas.value} `,
+                data: [rlp],
+                backgroundColor: ['#3498db'],
+                borderRadius: 8,
+                barPercentage: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 120, 
+                    title: { display: true, text: 'cm' }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                title:{
+                    display: true,
+                    text: 'Rata rata LP',
+                    font:{
+                        size: 15
+                    }
+                }
+            }
+        }
+    });
+    
+    
+    
+     const rlila = (totallila/totalpr).toFixed(1);
+    
+    
+    const olila = document.getElementById('glila').getContext('2d');
+
+    if (myChartLILA) myChartLILA.destroy();
+
+    myChartLILA = new Chart(olila, {
+        type: 'bar',
+        data: {
+            labels: ['Lingkar lengan Atas (*khusus perempuan)'],
+            datasets: [{
+                label: `Rata-rata LILA Kelas ${dkelas.value} `,
+                data: [rlila],
+                backgroundColor: ['#3498db'],
+                borderRadius: 8,
+                barPercentage: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 60, 
+                    title: { display: true, text: 'cm' }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                title:{
+                    display: true,
+                    text: 'Rata rata LILA',
+                    font:{
+                        size: 15
+                    }
+                }
+            }
+        }
+    });
+    
+     const rimt = (totalimt/jdta).toFixed(1);
+    
+    
+    const oimt = document.getElementById('gimt').getContext('2d');
+
+    if (myChartIMT) myChartIMT.destroy();
+
+    myChartIMT = new Chart(oimt, {
+        type: 'bar',
+        data: {
+            labels: ['IMT'],
+            datasets: [{
+                label: `Rata-rata IMT Kelas ${dkelas.value} `,
+                data: [rimt],
+                backgroundColor: ['#3498db'],
+                borderRadius: 8,
+                barPercentage: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 90, 
+                    title: { display: true, text: 'IMT' }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                title:{
+                    display: true,
+                    text: 'Rata rata IMT',
+                    font:{
+                        size: 15
+                    }
+                }
+            }
+        }
+    });
+    
+    
+}
+
+
+
+
+async function olahumum3(){
+    
+    const dsref = collection(db, "Datakes");
+    const qdsref = query(dsref, where("TahunAjaran", "==", dtahun.value), where("Periode","==", dbulan.value),orderBy("Kelas", "asc"))
+    const dqs = await getDocs(qdsref)
+    
+    
+    
+    let totalsis=0;
+        let totallk=0;
+        let totalpr=0;
+        let totalstu=0;
+        let totalkur=0;
+        let totalnor=0;
+        let totalbb=0;
+        let totalob=0;
+    
+    
+    
+    const mod={};
+    dqs.forEach(doc=>{
+        
+        const i = doc.data();
+        const tha = i.Kelas;
+        const sbb = Number(i.BB);
+        const stb = Number(i.TB);
+        const slp = Number(i.LP);
+        const slila = Number(i.LILA);
+        const simt = Number(i.IMT);
+        const sjk = i.JK;
+        let std = i.TD;
+        std = std.replace(/\s+/g, '');
+        std = std.split('/');
+        
+        
+        
+        
+        if(!mod[tha]){
+            
+            mod[tha] = {totalbb: 0, jdta:0, totaltb:0, totallp:0, totallila:0, totalimt:0, totallk:0, totalpr:0, totalsistol:0, totaldiastol:0};
+        }
+        
+        mod[tha].totalbb+=sbb;
+        mod[tha].totaltb+=stb;
+        mod[tha].totallp+=slp;
+        mod[tha].totalimt+=simt;
+        mod[tha].totalsistol+= Number(std[0]);
+        mod[tha].totaldiastol+= Number(std[1]);
+        
+        
+        if(sjk==="Perempuan"){
+            mod[tha].totallila+=slila;
+            mod[tha].totalpr++;
+            totalpr++;
+        }else{
+            mod[tha].totallk++;
+            totallk++;
+        }
+        
+        
+        if(i.StaTB==="Stunting"){totalstu++};
+        if(i.StaIMT==="Kurus"){totalkur++};
+        if(i.StaIMT==="Normal"){totalnor++};
+        if(i.StaIMT==="Berat Berlebih"){totalbb++};
+        if(i.StaIMT==="Obesitas"){totalob++};
+        
+        
+        mod[tha].jdta++;
+        totalsis++;
+    })
+    
+    const lth = Object.keys(mod).sort();
+    
+    const rbb = lth.map(i=>{
+        return mod[i].totalbb/mod[i].jdta;
+    })
+     const rtb = lth.map(i=>{
+        return mod[i].totaltb/mod[i].jdta;
+    })
+    const rlp = lth.map(i=>{
+        return mod[i].totallp/mod[i].jdta;
+    })
+     const rimt = lth.map(i=>{
+        return mod[i].totalimt/mod[i].jdta;
+    })
+    const rlila = lth.map(i=>{
+        return mod[i].totallila/mod[i].totalpr;
+    })
+    const rtds = lth.map(i=>{
+        return mod[i].totalsistol/mod[i].jdta;
+    })
+     const rtdd = lth.map(i=>{
+        return mod[i].totaldiastol/mod[i].jdta;
+    })
+    
+    
+    console.log(rbb);
+    
+    const txt = "Kelas";
+    
+    
+    document.getElementById("infoth").innerHTML=dtahun.value;
+    document.getElementById("infobln").innerHTML=dbulan.value;
+    document.getElementById("infokelas").innerHTML="Semua Kelas";
+    
+    isitabel(totalsis, totallk, totalpr, totalstu, totalkur, totalnor, totalbb, totalob);
+    
+    
+    
+    const path = [totalkur,totalnor,totalbb,totalob]
+const plabel = ["Kurus", "Normal", "Berat Berlebih","Obesitas" ]
+const csimt = document.getElementById('gsimt').getContext('2d');
+  
+  if (myChartSIMT) myChartSIMT.destroy();
+  
+ myChartSIMT= new Chart(csimt, {
+    type: 'bar', // Gunakan line chart untuk melihat tren
+    data: {
+      labels: plabel,
+      datasets: [{
+        label: 'Rata-rata Status IMT',
+        data: path,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+         
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata Status IMT',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Jumlah'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Semua Kelas",
+          }
+        }
+      }
+    }
+  });
+  
+  const cpath = [totalstu, totalsis-totalstu]
+const cplabel = ["Stunting","Normal" ]
+const csstu = document.getElementById('gsstun').getContext('2d');
+  
+  if (myChartSSTUN) myChartSSTUN.destroy();
+  
+ myChartSSTUN= new Chart(csstu, {
+    type: 'bar', // Gunakan line chart untuk melihat tren
+    data: {
+      labels: cplabel,
+      datasets: [{
+        label: 'Rata-rata Status TB',
+        data: cpath,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+         
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata Status TB',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Jumlah'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Semua Kelas",
+          }
+        }
+      }
+    }
+  });
+    
+    
+    
+    
+    
+    
+    
+    const cbb = document.getElementById('gbb').getContext('2d');
+  
+  if (myChartBB) myChartBB.destroy();
+  
+ myChartBB= new Chart(cbb, {
+    type: 'bar', 
+    data: {
+      labels: lth,
+      datasets: [{
+        label: "Rata rata BB(kg)",
+        data: rbb,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+         
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata BB',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Berat Badan (kg)'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt,
+          }
+        }
+      }
+    }
+  });
+    
+    
+    const ctb = document.getElementById('gtb').getContext('2d');
+  
+  if (myChartTB) myChartTB.destroy();
+  
+ myChartTB= new Chart(ctb, {
+    type: 'bar', 
+    data: {
+      labels: lth,
+      datasets: [{
+        label: 'Rata-rata Tinggi Badan (cm)',
+        data: rtb,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+          
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata TB',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Tinggi Badan (cm)'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt,
+          }
+        }
+      }
+    }
+  });
+  
+  
+  const ctlp = document.getElementById('glp').getContext('2d');
+  
+  if (myChartLP) myChartLP.destroy();
+  
+ myChartLP= new Chart(ctlp, {
+    type: 'bar', 
+    data: {
+      labels: lth,
+      datasets: [{
+        label: 'Rata-rata Lingkar Perut (cm)',
+        data: rlp,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+          
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata LP',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Lingkar Perut (cm)'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt,
+          }
+        }
+      }
+    }
+  });
+    
+    const clila = document.getElementById('glila').getContext('2d');
+  
+  if (myChartLILA) myChartLILA.destroy();
+  
+ myChartLILA= new Chart(clila, {
+    type: 'bar', 
+    data: {
+      labels: lth,
+      datasets: [{
+        label: 'Rata-rata LILA *khusus perempuan(cm)',
+        data: rlila,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+          
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata LILA',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'LILA (cm)'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt,
+          }
+        }
+      }
+    }
+  });
+    
+    
+    const cimt = document.getElementById('gimt').getContext('2d');
+  
+  if (myChartIMT) myChartIMT.destroy();
+  
+ myChartIMT= new Chart(cimt, {
+    type: 'bar', 
+    data: {
+      labels: lth,
+      datasets: [{
+        label: 'Rata-rata IMT',
+        data: rimt,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+          
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata IMT',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'IMT'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt,
+          }
+        }
+      }
+    }
+  });
+    
+    
+  const ctd = document.getElementById('gtd').getContext('2d');
+  
+  if (myChartTD) myChartTD.destroy();
+  
+ myChartTD= new Chart(ctd, {
+    type: 'bar', 
+    data: {
+      labels: lth,
+      datasets: [{
+        label: 'Rata-rata TD Sistolik(atas)',
+        data: rtds,
+        borderColor: '#6655ff',
+        backgroundColor: 'rgba(35, 18, 136, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      },{
+      label: 'Rata-rata TD Diastolik(bawah)',
+        data: rtdd,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+     } ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom'
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata Tekanan Darah (mmHg)',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'mmHg'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt
+          }
+        }
+      }
+    }
+  });  
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+async function olahumum2(){
+    
+    const dsref = collection(db, "Datakes");
+    const qdsref = query(dsref, where("TahunAjaran", "==", dtahun.value),orderBy("Periode", "asc"))
+    const dqs = await getDocs(qdsref)
+    
+    
+    
+    let totalsis=0;
+        let totallk=0;
+        let totalpr=0;
+        let totalstu=0;
+        let totalkur=0;
+        let totalnor=0;
+        let totalbb=0;
+        let totalob=0;
+    
+    
+    
+    const mod={};
+    dqs.forEach(doc=>{
+        
+        const i = doc.data();
+        const tha = i.Periode;
+        const sbb = Number(i.BB);
+        const stb = Number(i.TB);
+        const slp = Number(i.LP);
+        const slila = Number(i.LILA);
+        const simt = Number(i.IMT);
+        const sjk = i.JK;
+        let std = i.TD;
+        std = std.replace(/\s+/g, '');
+        std = std.split('/');
+        
+        
+        
+        
+        if(!mod[tha]){
+            
+            mod[tha] = {totalbb: 0, jdta:0, totaltb:0, totallp:0, totallila:0, totalimt:0, totallk:0, totalpr:0, totalsistol:0, totaldiastol:0};
+        }
+        
+        mod[tha].totalbb+=sbb;
+        mod[tha].totaltb+=stb;
+        mod[tha].totallp+=slp;
+        mod[tha].totalimt+=simt;
+        mod[tha].totalsistol+= Number(std[0]);
+        mod[tha].totaldiastol+= Number(std[1]);
+        
+        
+        if(sjk==="Perempuan"){
+            mod[tha].totallila+=slila;
+            mod[tha].totalpr++;
+            totalpr++;
+        }else{
+            mod[tha].totallk++;
+            totallk++;
+        }
+        
+        
+        if(i.StaTB==="Stunting"){totalstu++};
+        if(i.StaIMT==="Kurus"){totalkur++};
+        if(i.StaIMT==="Normal"){totalnor++};
+        if(i.StaIMT==="Berat Berlebih"){totalbb++};
+        if(i.StaIMT==="Obesitas"){totalob++};
+        
+        
+        mod[tha].jdta++;
+        totalsis++;
+    })
+    
+    const lth = Object.keys(mod).sort();
+    
+    const rbb = lth.map(i=>{
+        return mod[i].totalbb/mod[i].jdta;
+    })
+     const rtb = lth.map(i=>{
+        return mod[i].totaltb/mod[i].jdta;
+    })
+    const rlp = lth.map(i=>{
+        return mod[i].totallp/mod[i].jdta;
+    })
+     const rimt = lth.map(i=>{
+        return mod[i].totalimt/mod[i].jdta;
+    })
+    const rlila = lth.map(i=>{
+        return mod[i].totallila/mod[i].totalpr;
+    })
+    const rtds = lth.map(i=>{
+        return mod[i].totalsistol/mod[i].jdta;
+    })
+     const rtdd = lth.map(i=>{
+        return mod[i].totaldiastol/mod[i].jdta;
+    })
+    
+    
+    console.log(rbb);
+    
+    const ket = "Periode Bulan";
+    
+    diaumum(lth, rbb, rtb, rlp, rlila, rimt, rtds, rtdd, ket, totalkur, totalnor, totalbb, totalob, totalstu, totalsis);
+    
+    document.getElementById("infoth").innerHTML=dtahun.value;
+    document.getElementById("infobln").innerHTML="Semua Bulan";
+    document.getElementById("infokelas").innerHTML="Semua Kelas";
+    
+    isitabel(totalsis, totallk, totalpr, totalstu, totalkur, totalnor, totalbb, totalob);
+    
+}
+
+
+async function olahumum(){
+    const dsref = collection(db, "Datakes");
+    const qdsref = query(dsref, orderBy("TahunAjaran", "asc"))
+    const dqs = await getDocs(qdsref)
+    
+    
+    
+    let totalsis=0;
+        let totallk=0;
+        let totalpr=0;
+        let totalstu=0;
+        let totalkur=0;
+        let totalnor=0;
+        let totalbb=0;
+        let totalob=0;
+    
+    
+    
+    const mod={};
+    dqs.forEach(doc=>{
+        
+        const i = doc.data();
+        const tha = i.TahunAjaran;
+        const sbb = Number(i.BB);
+        const stb = Number(i.TB);
+        const slp = Number(i.LP);
+        const slila = Number(i.LILA);
+        const simt = Number(i.IMT);
+        const sjk = i.JK;
+        let std = i.TD;
+        std = std.replace(/\s+/g, '');
+        std = std.split('/');
+        
+        
+        
+        
+        if(!mod[tha]){
+            
+            mod[tha] = {totalbb: 0, jdta:0, totaltb:0, totallp:0, totallila:0, totalimt:0, totallk:0, totalpr:0, totalsistol:0, totaldiastol:0};
+        }
+        
+        mod[tha].totalbb+=sbb;
+        mod[tha].totaltb+=stb;
+        mod[tha].totallp+=slp;
+        mod[tha].totalimt+=simt;
+        mod[tha].totalsistol+= Number(std[0]);
+        mod[tha].totaldiastol+= Number(std[1]);
+        
+        
+        if(sjk==="Perempuan"){
+            mod[tha].totallila+=slila;
+            mod[tha].totalpr++;
+            totalpr++;
+        }else{
+            mod[tha].totallk++;
+            totallk++;
+        }
+        
+        
+        if(i.StaTB==="Stunting"){totalstu++};
+        if(i.StaIMT==="Kurus"){totalkur++};
+        if(i.StaIMT==="Normal"){totalnor++};
+        if(i.StaIMT==="Berat Berlebih"){totalbb++};
+        if(i.StaIMT==="Obesitas"){totalob++};
+        
+        
+        mod[tha].jdta++;
+        totalsis++;
+    })
+    
+    const lth = Object.keys(mod).sort();
+    
+    const rbb = lth.map(i=>{
+        return mod[i].totalbb/mod[i].jdta;
+    })
+     const rtb = lth.map(i=>{
+        return mod[i].totaltb/mod[i].jdta;
+    })
+    const rlp = lth.map(i=>{
+        return mod[i].totallp/mod[i].jdta;
+    })
+     const rimt = lth.map(i=>{
+        return mod[i].totalimt/mod[i].jdta;
+    })
+    const rlila = lth.map(i=>{
+        return mod[i].totallila/mod[i].totalpr;
+    })
+    const rtds = lth.map(i=>{
+        return mod[i].totalsistol/mod[i].jdta;
+    })
+     const rtdd = lth.map(i=>{
+        return mod[i].totaldiastol/mod[i].jdta;
+    })
+    
+    
+    console.log(rbb);
+    
+    const ket = "Periode Tahun Ajaran";
+    
+ diaumum(lth, rbb, rtb, rlp, rlila, rimt, rtds, rtdd, ket, totalkur, totalnor, totalbb, totalob, totalstu, totalsis);
+    
+    document.getElementById("infoth").innerHTML="Semua Tahun";
+    document.getElementById("infobln").innerHTML="Semua Bulan";
+    document.getElementById("infokelas").innerHTML="Semua Kelas";
+    
+    isitabel(totalsis, totallk, totalpr, totalstu, totalkur, totalnor, totalbb, totalob);
+    
+}
+
+
+function diaumum(lth, rbb, rtb, rlp, rlila, rimt, rtds, rtdd, txt, tkur, tnor, tbb,tob, tstu, txsis){
+const path = [tkur,tnor,tbb,tob]
+const plabel = ["Kurus", "Normal", "Berat Berlebih","Obesitas" ]
+const csimt = document.getElementById('gsimt').getContext('2d');
+  
+  if (myChartSIMT) myChartSIMT.destroy();
+  
+ myChartSIMT= new Chart(csimt, {
+    type: 'bar', // Gunakan line chart untuk melihat tren
+    data: {
+      labels: plabel,
+      datasets: [{
+        label: 'Rata-rata Status IMT',
+        data: path,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+         
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata Status IMT',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Jumlah'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt,
+          }
+        }
+      }
+    }
+  });
+  
+  const cpath = [tstu, txsis-tstu]
+const cplabel = ["Stunting","Normal" ]
+const csstu = document.getElementById('gsstun').getContext('2d');
+  
+  if (myChartSSTUN) myChartSSTUN.destroy();
+  
+ myChartSSTUN= new Chart(csstu, {
+    type: 'bar', // Gunakan line chart untuk melihat tren
+    data: {
+      labels: cplabel,
+      datasets: [{
+        label: 'Rata-rata Status TB',
+        data: cpath,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+         
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata Status TB',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Jumlah'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt,
+          }
+        }
+      }
+    }
+  });
+
+    const cbb = document.getElementById('gbb').getContext('2d');
+  
+  if (myChartBB) myChartBB.destroy();
+  
+ myChartBB= new Chart(cbb, {
+    type: 'line', // Gunakan line chart untuk melihat tren
+    data: {
+      labels: lth,
+      datasets: [{
+        label: 'Rata-rata Berat Badan (kg)',
+        data: rbb,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+         
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata BB',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: false,
+          title: {
+            display: true,
+            text: 'Berat Badan (kg)'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt,
+          }
+        }
+      }
+    }
+  });
+    
+    
+    const ctb = document.getElementById('gtb').getContext('2d');
+  
+  if (myChartTB) myChartTB.destroy();
+  
+ myChartTB= new Chart(ctb, {
+    type: 'line', 
+    data: {
+      labels: lth,
+      datasets: [{
+        label: 'Rata-rata Tinggi Badan (cm)',
+        data: rtb,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+          
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata TB',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: false,
+          title: {
+            display: true,
+            text: 'Tinggi Badan (cm)'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt,
+          }
+        }
+      }
+    }
+  });
+  
+  
+  const ctlp = document.getElementById('glp').getContext('2d');
+  
+  if (myChartLP) myChartLP.destroy();
+  
+ myChartLP= new Chart(ctlp, {
+    type: 'line', 
+    data: {
+      labels: lth,
+      datasets: [{
+        label: 'Rata-rata Lingkar Perut (cm)',
+        data: rlp,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+          
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata LP',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: false,
+          title: {
+            display: true,
+            text: 'Lingkar Perut (cm)'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt,
+          }
+        }
+      }
+    }
+  });
+    
+    const clila = document.getElementById('glila').getContext('2d');
+  
+  if (myChartLILA) myChartLILA.destroy();
+  
+ myChartLILA= new Chart(clila, {
+    type: 'line', 
+    data: {
+      labels: lth,
+      datasets: [{
+        label: 'Rata-rata LILA *khusus perempuan(cm)',
+        data: rlila,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+          
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata LILA',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: false,
+          title: {
+            display: true,
+            text: 'LILA (cm)'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt,
+          }
+        }
+      }
+    }
+  });
+    
+    
+    const cimt = document.getElementById('gimt').getContext('2d');
+  
+  if (myChartIMT) myChartIMT.destroy();
+  
+ myChartIMT= new Chart(cimt, {
+    type: 'line', 
+    data: {
+      labels: lth,
+      datasets: [{
+        label: 'Rata-rata IMT',
+        data: rimt,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+          
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata IMT',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: false,
+          title: {
+            display: true,
+            text: 'IMT'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt,
+          }
+        }
+      }
+    }
+  });
+    
+    
+  const ctd = document.getElementById('gtd').getContext('2d');
+  
+  if (myChartTD) myChartTD.destroy();
+  
+ myChartTD= new Chart(ctd, {
+    type: 'line', 
+    data: {
+      labels: lth,
+      datasets: [{
+        label: 'Rata-rata TD Sistolik(atas)',
+        data: rtds,
+        borderColor: '#6655ff',
+        backgroundColor: 'rgba(35, 18, 136, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+      },{
+      label: 'Rata-rata TD Diastolik(bawah)',
+        data: rtdd,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#2980b9',
+        fill: true, 
+        tension: 0.3 
+     } ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom'
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        title:{
+                    display: true,
+                    text: 'Rata rata Tekanan Darah (mmHg)',
+                    font:{
+                        size: 15
+                    }
+                }
+      },
+      scales: {
+        y: {
+          beginAtZero: false,
+          title: {
+            display: true,
+            text: 'mmHg'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: txt
+          }
+        }
+      }
+    }
+  });  
+    
+    
+    
+    
+    
+}
+
+
+function isitabel(ss, lk, pr, stu, kur, nor, bb, ob){
+    const tblindi = document.getElementById("tabelindi");
+    
+    tblindi.innerHTML = ( `
+                  
+                <tr class="border-b">
+                  
+                    <td class="tdb">${ss}</td>
+                    <td class="tdb">${lk}</td>
+                    <td class="tdb">${pr}</td>
+                    
+                       <td class="tdb">${stu}</td>
+                    <td class="tdb">${kur}</td>
+                    
+                    <td class="tdb">${nor}</td>
+                    <td class="tdb">${bb}</td>
+                    <td class="tdb">${ob}</td>
+                    
+                    
+                </tr>
+            `)
+            
+}
+
+
+
+
+await olahumum();
+
+
+
+  document.getElementById("batalpop").onchange = function(){
+        
+        document.getElementById("popc").style.display="none";
+        
+    }
+    
+  
+  
+ document.getElementById("kunjungi").addEventListener("click",function(){
+     window.open('https://rai-project-art.github.io/APDK/diagram.html','_blank');
+ 
+ })
+  
+function kdbisaprint(){
+    document.getElementById("popc").style.display="flex";
+}
+
+  
+
+
+
+
+
+document.getElementById("print").onclick = function() {
+    
+        // 1. Isi tanggal cetak otomatis
+        const tgl = new Date().toLocaleString('id-ID');
+        const info = document.getElementById('infoTanggal');
+        if (info) info.innerText = "Dicetak pada: " + tgl;
+
+        // 2. Perintah print browser
+        kdbisaprint();
+        
+    }
+
+document.getElementById("back?").onclick= function(){
+    window.location.href="beranda.html";
+}
+
+
+await ambildata();
+
+
+</script>
+
+
+</html>
